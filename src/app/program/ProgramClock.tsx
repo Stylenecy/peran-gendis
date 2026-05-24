@@ -100,7 +100,7 @@ export default function ProgramClock() {
   const prog = programs[active];
 
   return (
-    <section style={{ background: "#0d0118" }} className="min-h-screen flex items-center justify-center py-24 px-4 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center py-24 px-4 relative overflow-hidden">
       {/* Ambient background glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none"

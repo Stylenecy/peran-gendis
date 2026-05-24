@@ -6,6 +6,15 @@ export default function ProgramPage() {
     <div className="relative bg-[#0d0118] text-white" style={{ colorScheme: "dark" }}>
       <PageBg />
 
+      {/* Purple overlay — blends void with Tentang's identity */}
+      <div
+        className="fixed inset-0 z-[1] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 90% 70% at 50% 30%, rgba(59,18,99,0.32) 0%, transparent 70%)",
+        }}
+      />
+
       <section className="relative z-10 pt-36 pb-6 px-4">
         <div className="max-w-5xl mx-auto">
           <span
