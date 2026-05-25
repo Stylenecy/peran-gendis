@@ -4,22 +4,25 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 
 // Data Structure
-const operasionalMembers = [
+const timInti = [
   { name: "Arion Sudibyo", image: "/photos/personil/Arion-Sudibyo.png" },
   { name: "Jurita", image: "/photos/personil/Jurita.png" },
-  { name: "Farhani Kholilah", image: "/photos/personil/Farhani-Kholilah.png" },
-  { name: "Syahda Tsaqif", image: "/photos/personil/Syahda-Tsaqif.png" },
   { name: "Eunica", image: null },
   { name: "Aurellicha", image: null },
+  { name: "Zaki", image: null },
+  { name: "Callysta", image: null },
+  { name: "Catherine Surya", image: null },
+];
+
+const volunteerGemar = [
+  { name: "Farhani Kholilah", image: "/photos/personil/Farhani-Kholilah.png" },
+  { name: "Syahda Tsaqif", image: "/photos/personil/Syahda-Tsaqif.png" },
   { name: "Rizqia Azkiya", image: null },
   { name: "Maria Imanuella Ratna", image: null },
   { name: "Zahraa Putri", image: null },
   { name: "Amalia", image: null },
   { name: "Dila", image: null },
   { name: "Latif", image: null },
-  { name: "Zaki", image: null },
-  { name: "Callysta", image: null },
-  { name: "Catherine Surya", image: null },
   { name: "Zare", image: null },
 ];
 
@@ -189,31 +192,60 @@ export default function TimTree() {
           </div>
         </div>
 
-        {/* Level 4: Operasional / Anggota */}
+        {/* Level 4: Tim Inti */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 relative">
           <div className="absolute top-12 left-4 lg:left-[33.333333%] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-pg-gold bg-[#0d0118] hidden lg:block z-10" />
-          
+
           <div className="lg:col-span-4 flex flex-col justify-start lg:pt-8 relative">
-            {/* Sticky Container for the Left Title to follow user scrolling through many members */}
             <div className="sticky top-32">
               <AnimatedSection direction="left" delay={0.2}>
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-pg-cream mb-4 leading-tight">
                   Tim <br/>
-                  <em className="text-pg-gold not-italic text-glow">Operasional</em>
+                  <em className="text-pg-gold not-italic text-glow">Inti</em>
                 </h2>
                 <div className="h-px w-24 bg-pg-gold/50 mb-4" />
                 <p className="text-pg-cream/60 font-light text-sm tracking-wide">
-                  Mesin utama pergerakan. Mereka yang turun ke jalan, mengajar, mengadvokasi, dan mewujudkan ide menjadi realita.
+                  Mesin utama pergerakan. Mereka yang mengadvokasi, mengorganisir, dan mewujudkan ide menjadi realita.
                 </p>
               </AnimatedSection>
             </div>
           </div>
-          
+
           <div className="lg:col-span-8">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              {operasionalMembers.map((member, i) => (
+              {timInti.map((member, i) => (
                 <AnimatedSection key={member.name} direction="up" delay={0.1 * (i % 6)}>
                   <MemberCard name={member.name} role="Anggota" image={member.image} />
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Level 5: Volunteer GeMar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 relative">
+          <div className="absolute top-12 left-4 lg:left-[33.333333%] -translate-x-1/2 w-3 h-3 rounded-full bg-pg-gold/40 hidden lg:block z-10" />
+
+          <div className="lg:col-span-4 flex flex-col justify-start lg:pt-8 relative">
+            <div className="sticky top-32">
+              <AnimatedSection direction="left" delay={0.2}>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-pg-cream mb-4 leading-tight">
+                  Volunteer <br/>
+                  <em className="text-pg-gold not-italic text-glow">GeMar</em>
+                </h2>
+                <div className="h-px w-24 bg-pg-gold/50 mb-4" />
+                <p className="text-pg-cream/60 font-light text-sm tracking-wide">
+                  Mereka yang turun langsung — mengajar, mendampingi, dan menghadirkan ruang belajar bagi anak-anak Yogyakarta.
+                </p>
+              </AnimatedSection>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {volunteerGemar.map((member, i) => (
+                <AnimatedSection key={member.name} direction="up" delay={0.1 * (i % 6)}>
+                  <MemberCard name={member.name} role="Volunteer GeMar" image={member.image} />
                 </AnimatedSection>
               ))}
             </div>

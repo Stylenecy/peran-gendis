@@ -51,9 +51,7 @@ export default function TentangLatarBelakang() {
           <AnimatedSection direction="up" delay={0.3}>
             <div className="liquid-glass p-6 md:p-8 border-l-2 border-pg-gold/50 hover:border-pg-gold hover:box-glow transition-all duration-500">
               <p className="text-pg-cream/90 text-lg font-light leading-relaxed">
-                Peran Gendis lahir dari empat orang yang sebelumnya aktif di{" "}
-                <strong className="text-pg-gold font-medium">SriKandi UGM</strong> — dan memilih untuk tidak berhenti bergerak setelah
-                masa kepengurusan selesai.
+                Peran Gendis lahir dari empat orang yang memilih untuk tidak berhenti bergerak — dan membangun komunitas ini secara independen.
               </p>
             </div>
           </AnimatedSection>

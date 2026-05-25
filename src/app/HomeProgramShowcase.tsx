@@ -82,39 +82,13 @@ const programs = [
     ],
     attachment: "catatan-gendis-terbaru.pdf",
   },
-  {
-    id: "koper",
-    name: "KoPer",
-    fullName: "Komunitas Peduli",
-    label: "Aktif",
-    labelColor: "#10b981",
-    avatarBg: "from-emerald-600 to-emerald-900",
-    avatarText: "K",
-    preview: "Jaringan komunitas yang peduli terhadap isu sosial gender dan disabilitas...",
-    time: "2026",
-    unread: false,
-    summary:
-      "KoPer membangun jaringan kepedulian terhadap isu-isu sosial, khususnya disabilitas dan gender. Program ini menghubungkan individu dan komunitas yang ingin terlibat aktif.",
-    body: [
-      "KoPer membangun jembatan antara individu yang peduli dan komunitas yang membutuhkan dukungan.",
-      "Fokus utama pada isu disabilitas dan ketidaksetaraan gender di tingkat komunitas.",
-      "Program membuka ruang bagi siapa saja — sebagai relawan, donatur, maupun pendukung moral.",
-    ],
-    stats: [
-      { v: "16", l: "Anggota Aktif" },
-      { v: "2026", l: "Tahun Aktif" },
-      { v: "Jaringan", l: "Model" },
-    ],
-    attachment: null,
-  },
 ];
 
 const sidebarNav = [
-  { name: "Semua Program", count: 4 },
+  { name: "Semua Program", count: 3 },
   { name: "GeMar", count: null },
   { name: "GeRak", count: null },
   { name: "Catatan Gendis", count: null },
-  { name: "KoPer", count: null },
 ];
 
 const categories = [
@@ -218,7 +192,7 @@ export default function HomeProgramShowcase() {
             <div className="hidden md:block pt-4 border-t border-white/5">
               <div className="flex items-center gap-2 text-[10px] text-white/40">
                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>4 Program Aktif · Fase 1</span>
+                <span>3 Program Aktif · Fase 1</span>
               </div>
             </div>
           </div>

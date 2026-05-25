@@ -20,7 +20,7 @@ const editions = [
     no: "03",
     title: "Patriarki Juga Merugikan Laki-Laki",
     theme: "Gender · Patriarki",
-    note: "Kolaborasi Srikandi 360 · 208 likes",
+    note: null,
   },
   {
     no: "04",

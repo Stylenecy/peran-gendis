@@ -31,19 +31,8 @@ const programs = [
     featured: false,
   },
   {
-    href: "/program/koper",
-    no: "03",
-    name: "KoPer",
-    full: "Komunitas Peran",
-    desc: "Ruang aman diskusi · Perempuan & kelompok marginal",
-    stat: null,
-    statLabel: null,
-    accent: "#d97706",
-    featured: false,
-  },
-  {
     href: "/program/catatan",
-    no: "04",
+    no: "03",
     name: "Catatan Gendis",
     full: "Jurnal Aksi Komunitas",
     desc: "Artikel opini & tanggapan isu · Setiap minggu",
@@ -80,7 +69,7 @@ export default function HomePrograms() {
                 className="font-display italic text-pg-cream leading-[0.88]"
                 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", letterSpacing: "-0.04em" }}
               >
-                Empat cara<br />kami bergerak.
+                Tiga cara<br />kami bergerak.
               </h2>
             </div>
             <Link

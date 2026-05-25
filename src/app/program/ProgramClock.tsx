@@ -41,18 +41,6 @@ const programs = [
     stat: null,
     statLabel: null,
   },
-  {
-    id: "koper",
-    name: "KoPer",
-    full: "Komunitas Peran",
-    type: "Aksi Komunitas",
-    accent: "#d97706",
-    desc: "Ruang aman diskusi bagi perempuan dan kelompok marginal untuk saling menguatkan.",
-    cta: "Jelajahi Aksi",
-    href: "/program/koper",
-    stat: null,
-    statLabel: null,
-  },
 ];
 
 // SVG tick marks — 12 positions around the clock face (360x360 viewBox)
@@ -74,7 +62,6 @@ const LINE_ENDPOINTS = [
   [180, 14],  // 12 (GeMar)
   [346, 180], // 3  (GeRak)
   [180, 346], // 6  (Catatan)
-  [14, 180],  // 9  (KoPer)
 ];
 
 export default function ProgramClock() {
@@ -122,10 +109,6 @@ export default function ProgramClock() {
           {/* GeMar — 12 o'clock */}
           <ClockLabel prog={programs[0]} index={0} active={active} onSelect={handleSelect}
             className="col-start-2 row-start-1 flex flex-col items-center justify-end pb-10" />
-
-          {/* KoPer — 9 o'clock */}
-          <ClockLabel prog={programs[3]} index={3} active={active} onSelect={handleSelect}
-            className="col-start-1 row-start-2 flex flex-col justify-center items-end pr-8" />
 
           {/* Clock face */}
           <div className="col-start-2 row-start-2 relative">

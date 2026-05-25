@@ -10,7 +10,7 @@ const founders = [
     nickname: "Angel",
     role: "Co-Founder",
     tags: ["PJ Komisi Gender"],
-    note: "Mantan anggota SriKandi UGM",
+    note: null,
     image: "/photos/personil/Martha-Angelina.png",
   },
   {
@@ -18,7 +18,7 @@ const founders = [
     nickname: "Nadila",
     role: "Co-Founder",
     tags: [],
-    note: "Mantan anggota SriKandi UGM",
+    note: null,
     image: null, // No photo yet
   },
   {
@@ -26,7 +26,7 @@ const founders = [
     nickname: "Rayen",
     role: "Co-Founder",
     tags: ["PJ Komisi Anak"],
-    note: "Aktif anggota SriKandi UGM",
+    note: null,
     image: "/photos/personil/Vincentius-Rian.png",
   },
 ];
@@ -61,7 +61,7 @@ export default function TentangFounders() {
             </em>
           </h2>
           <p className="text-pg-cream/80 text-lg mt-6 font-light max-w-2xl mx-auto leading-relaxed">
-            Berawal dari SriKandi UGM, mereka memilih melanjutkan gerakan secara independen—dengan aksi nyata.
+            Mereka memilih membangun gerakan secara independen—dengan aksi nyata di lapangan.
           </p>
         </AnimatedSection>
 
@@ -154,9 +154,11 @@ export default function TentangFounders() {
                     ))}
                   </div>
 
-                  <p className="text-sm text-pg-cream/70 font-light mt-auto leading-relaxed border-t border-white/10 pt-5">
-                    {founder.note}
-                  </p>
+                  {founder.note && (
+                    <p className="text-sm text-pg-cream/70 font-light mt-auto leading-relaxed border-t border-white/10 pt-5">
+                      {founder.note}
+                    </p>
+                  )}
                 </div>
               </div>
             </AnimatedSection>

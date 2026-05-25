@@ -31,7 +31,7 @@ export default function ProgramPage() {
             Program Kami.
           </h1>
           <p className="text-pg-cream/45 text-lg font-light leading-relaxed mt-6 max-w-xl">
-            Empat pilar yang menjadi nafas perjuangan Peran Gendis — klik untuk
+            Tiga pilar yang menjadi nafas perjuangan Peran Gendis — klik untuk
             menjelajahi.
           </p>
         </div>

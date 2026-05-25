@@ -125,9 +125,8 @@ export default function HomeAbout() {
 
           <AnimatedSection direction="right" delay={0.12}>
             <p className="text-pg-cream/30 text-lg leading-relaxed mb-10">
-              Didirikan awal 2026 oleh empat perempuan mantan anggota SriKandi
-              UGM yang percaya bahwa langkah kecil bisa menjadi awal perubahan
-              lebih baik.
+              Didirikan awal 2026 oleh empat perempuan yang percaya bahwa
+              langkah kecil bisa menjadi awal perubahan lebih baik.
             </p>
             <Link
               href="/tentang"

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const programs = [
   { href: "/program/catatan", label: "Catatan Gendis" },
-  { href: "/program/koper", label: "KoPer" },
   { href: "/program/gerak", label: "GeRak" },
   { href: "/program/gemar", label: "GeMar" },
 ];
