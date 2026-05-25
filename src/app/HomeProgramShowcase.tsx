@@ -19,15 +19,15 @@ const programs = [
     time: "17 Mei 2026",
     unread: true,
     summary:
-      "GeMar bergerak di 4 lokasi aktif sejak 17 Mei 2026. Program ini berfokus pada literasi anak dan perempuan melalui perpustakaan keliling dan sesi baca bersama tiap minggu.",
+      "GeMar bergerak di 3 lokasi aktif sejak 17 Mei 2026. Program ini berfokus pada pendidikan inklusif anak melalui bimbingan belajar gratis setiap minggu.",
     body: [
       "GeMar adalah program gerakan membaca bersama yang dirancang untuk meningkatkan minat dan akses literasi di kalangan anak-anak dan perempuan.",
-      "Saat ini aktif di 4 lokasi dengan sesi mingguan yang terbuka untuk umum. Volunteer dan donasi buku sangat kami sambut.",
+      "Saat ini aktif di 3 lokasi dengan sesi mingguan yang terbuka untuk umum. Volunteer dan donasi buku sangat kami sambut.",
       "Program mencakup: bacaan tematik kesetaraan gender, sesi mendongeng untuk anak, dan diskusi komunitas.",
     ],
     stats: [
-      { v: "4", l: "Lokasi Aktif" },
-      { v: "16+", l: "Relawan" },
+      { v: "3", l: "Lokasi Aktif" },
+      { v: "9", l: "Volunteer" },
       { v: "Mei 2026", l: "Mulai" },
     ],
     attachment: "jadwal-gemar-mei2026.pdf",

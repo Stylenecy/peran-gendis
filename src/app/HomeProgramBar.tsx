@@ -57,7 +57,7 @@ export default function HomeProgramBar() {
         </div>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline text-white/40 text-[10px]">
-            GeMar aktif · 4 lokasi
+            GeMar aktif · 3 lokasi
           </span>
           {time && (
             <span className="font-medium text-[11px] text-white/80">{time}</span>

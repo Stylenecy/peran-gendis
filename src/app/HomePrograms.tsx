@@ -13,7 +13,7 @@ const programs = [
     no: "01",
     name: "GeMar",
     full: "Gendis Mengajar",
-    desc: "Bimbel gratis TK–SD · 4 lokasi Yogyakarta",
+    desc: "Bimbel gratis TK–SD · 3 lokasi Yogyakarta",
     stat: "12.956",
     statLabel: "anak butuh akses pendidikan",
     accent: "#d97706",

@@ -147,7 +147,7 @@ export default function GemarHero() {
           <p className="font-display font-semibold text-pg-cream-warm text-sm">
             17 Mei 2026
           </p>
-          <p className="text-pg-cream/40 text-[11px]">4 lokasi aktif</p>
+          <p className="text-pg-cream/40 text-[11px]">3 lokasi aktif</p>
         </div>
       </motion.div>
     </section>

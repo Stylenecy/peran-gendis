@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const locations = [
   {
     number: "01",
-    name: "Kampoeng Mataram",
-    area: "Bantul",
+    name: "Kampoeng Mataraman",
+    area: "Bantul (Panggunghardjo)",
     day: "Setiap Minggu",
     time: "16:00 – 17:30 WIB",
     note: "Suasana pedesaan, ruang terbuka dengan nuansa Jawa klasik",
@@ -13,16 +13,7 @@ const locations = [
   },
   {
     number: "02",
-    name: "Omah Kopi Tunggak",
-    area: "Sleman (Berbah)",
-    day: "Setiap Senin",
-    time: "16:00 – 17:30 WIB",
-    note: "Ruang komunitas berbasis kopi, hangat dan informal",
-    mapsUrl: "https://share.google/0qbeShnocGFvt4NjS",
-  },
-  {
-    number: "03",
-    name: "RTHP Klitren",
+    name: "RTHP Klitren Lor",
     area: "Kota Yogyakarta",
     day: "Setiap Senin",
     time: "16:00 – 17:30 WIB",
@@ -30,13 +21,13 @@ const locations = [
     mapsUrl: "https://share.google/T0GLGGVgP9QpGKydO",
   },
   {
-    number: "04",
-    name: "Kantor Kelurahan Klitren",
-    area: "Kota Yogyakarta",
-    day: "Setiap Minggu",
+    number: "03",
+    name: "Kedai Tanya",
+    area: "Sleman",
+    day: "Setiap Senin",
     time: "16:00 – 17:30 WIB",
-    note: "Ruang kelurahan yang ramah anak, mudah diakses warga",
-    mapsUrl: "https://share.google/7GbgK1op2eUAqVn1V",
+    note: "Lokasi aktif baru, hangat dan terbuka untuk komunitas",
+    mapsUrl: "https://share.google/FLxAayLHi02mQshlS",
   },
 ];
 
@@ -58,7 +49,7 @@ export default function GemarLocations() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="block text-pg-gold text-xs tracking-[0.3em] uppercase mb-6"
             >
-              4 Lokasi Aktif
+              3 Lokasi Aktif
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
