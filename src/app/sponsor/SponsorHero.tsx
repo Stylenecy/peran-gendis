@@ -69,7 +69,7 @@ export default function SponsorHero() {
 
       {/* Stats strip — visible on fold */}
       <div className="relative z-10 border-t border-white/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-3 divide-x divide-white/10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-white/10">
           {miniStats.map(({ value, suffix, label }) => (
             <div key={label} className="px-6 py-8 flex flex-col items-center text-center">
               <div className="font-display font-bold text-white flex items-baseline mb-2" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", letterSpacing: "-0.03em" }}>

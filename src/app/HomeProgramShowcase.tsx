@@ -127,7 +127,7 @@ export default function HomeProgramShowcase() {
         </div>
 
         {/* 3-col grid */}
-        <div className="grid grid-cols-12 h-[600px] md:h-[550px] overflow-hidden bg-black/20 text-sm">
+        <div className="grid grid-cols-12 h-auto md:h-[550px] md:overflow-hidden bg-black/20 text-sm">
           {/* Sidebar (col-span-3) */}
           <div className="col-span-12 md:col-span-3 border-r border-white/5 bg-black/30 p-4 flex flex-col justify-between overflow-y-auto">
             <div>
