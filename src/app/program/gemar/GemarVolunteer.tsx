@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 const requirements = [
   { label: "Follow Instagram",       detail: "@peran.gendis",                                    required: true },
@@ -9,7 +11,30 @@ const requirements = [
   { label: "Kontribusi operasional",  detail: "Rp15.000/bulan (opsional, bisa dinegosiasikan)",   required: false },
 ];
 
+type FormState = "idle" | "loading" | "success" | "error";
+
+const inputCls =
+  "w-full bg-transparent border px-4 py-3 text-sm text-pg-cream placeholder-pg-cream/30 outline-none transition-all duration-200 focus:border-pg-gold";
+const borderIdleCls = "border-pg-cream/15";
+const borderFocusCls = "focus:border-pg-gold";
+
 export default function GemarVolunteer() {
+  const [form, setForm] = useState({ name: "", phone: "", availability: "Minggu", location: "Kampoeng Mataraman", message: "" });
+  const [status, setStatus] = useState<FormState>("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+    const { error } = await supabase.from("volunteers").insert([{
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      availability: form.availability,
+      location: form.location,
+      message: form.message.trim() || null,
+    }]);
+    setStatus(error ? "error" : "success");
+  }
+
   return (
     <section
       id="volunteer"
@@ -201,52 +226,91 @@ export default function GemarVolunteer() {
                 </p>
               </motion.div>
 
-              {/* Apply block */}
+              {/* Apply block — inline form */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" }}
-                className="mt-8 space-y-3"
+                className="mt-8"
               >
-                <p className="text-pg-cream/35 text-xs tracking-[0.25em] uppercase mb-4">
-                  Cara Mendaftar
+                <p className="text-pg-cream/35 text-xs tracking-[0.25em] uppercase mb-6">
+                  Daftar Volunteer
                 </p>
 
-                <a
-                  href="https://wa.me/6285865193598"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between w-full py-4 px-5 bg-pg-gold hover:bg-pg-gold-light transition-all duration-300 hover:translate-x-1"
-                >
-                  <div>
-                    <p className="text-xs font-semibold tracking-wider uppercase text-pg-darkest/60">
-                      WhatsApp
-                    </p>
-                    <p className="text-base font-bold text-pg-darkest">
-                      0858-6519-3598 (Marelta Putri)
-                    </p>
+                {status === "success" ? (
+                  <div
+                    className="py-8 px-5 text-center"
+                    style={{ background: "rgba(217,119,6,0.1)", border: "1px solid rgba(217,119,6,0.35)" }}
+                  >
+                    <p className="text-pg-gold font-display font-semibold text-lg mb-2">Pendaftaran diterima!</p>
+                    <p className="text-pg-cream/65 text-sm">Tim kami akan menghubungimu secepatnya.</p>
                   </div>
-                  <span className="text-pg-darkest text-xl">→</span>
-                </a>
-
-                <a
-                  href="mailto:perangendis@gmail.com"
-                  className="group flex items-center justify-between w-full py-4 px-5 border transition-all duration-300 hover:translate-x-1"
-                  style={{ borderColor: "rgba(217,119,6,0.3)" }}
-                >
-                  <div>
-                    <p className="text-xs font-semibold tracking-wider uppercase text-pg-cream/35">
-                      Email
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      required
+                      type="text"
+                      placeholder="Nama lengkap *"
+                      value={form.name}
+                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                      className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
+                    />
+                    <input
+                      required
+                      type="tel"
+                      placeholder="Nomor WhatsApp *"
+                      value={form.phone}
+                      onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                      className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
+                    />
+                    <select
+                      required
+                      value={form.availability}
+                      onChange={e => setForm(f => ({ ...f, availability: e.target.value }))}
+                      className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
+                      style={{ background: "#0d0118" }}
+                    >
+                      <option value="Minggu">Setiap Minggu (Kampoeng Mataraman)</option>
+                      <option value="Senin">Setiap Senin (RTHP Klitren / Kedai Tanya)</option>
+                      <option value="Keduanya">Keduanya</option>
+                    </select>
+                    <select
+                      required
+                      value={form.location}
+                      onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
+                      className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
+                      style={{ background: "#0d0118" }}
+                    >
+                      <option value="Kampoeng Mataraman">Kampoeng Mataraman — Bantul</option>
+                      <option value="RTHP Klitren Lor">RTHP Klitren Lor — Yogyakarta</option>
+                      <option value="Kedai Tanya">Kedai Tanya — Sleman</option>
+                    </select>
+                    <textarea
+                      rows={3}
+                      placeholder="Pesan / motivasi (opsional)"
+                      value={form.message}
+                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                      className={`${inputCls} ${borderIdleCls} ${borderFocusCls} resize-none`}
+                    />
+                    {status === "error" && (
+                      <p className="text-red-400 text-xs">Terjadi kesalahan. Coba lagi atau hubungi via WhatsApp.</p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="w-full py-4 px-5 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+                    >
+                      {status === "loading" ? "Mengirim..." : "Daftar Sekarang →"}
+                    </button>
+                    <p className="text-center text-xs text-pg-cream/30">
+                      atau{" "}
+                      <a href="https://wa.me/6285865193598" target="_blank" rel="noopener noreferrer" className="underline text-pg-cream/50 hover:text-pg-gold transition-colors">
+                        chat langsung via WhatsApp
+                      </a>
                     </p>
-                    <p className="text-base text-pg-cream">perangendis@gmail.com</p>
-                  </div>
-                  <span className="text-pg-cream/35 text-xl">→</span>
-                </a>
-
-                <p className="text-center text-xs text-pg-cream/30">
-                  Kirimkan CV kamu ke salah satu kontak di atas
-                </p>
+                  </form>
+                )}
               </motion.div>
             </motion.div>
           </div>
