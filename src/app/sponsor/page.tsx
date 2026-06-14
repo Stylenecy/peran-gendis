@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import SponsorHero from "./SponsorHero";
 import SponsorImpact from "./SponsorImpact";
 import SponsorTiers from "./SponsorTiers";

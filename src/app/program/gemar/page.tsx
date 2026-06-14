@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import PageBg from "@/components/PageBg";
 import Link from "next/link";
 import GemarHero from "./GemarHero";
