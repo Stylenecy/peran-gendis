@@ -106,7 +106,18 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="px-8 md:px-12 pb-8 border-t border-white/8 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-xs text-pg-cream/30">© 2026 Peran Gendis. Semua hak dilindungi.</p>
+          <div className="flex flex-col gap-2">
+            <p className="text-xs text-pg-cream/30">© 2026 Peran Gendis. Semua hak dilindungi.</p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
+              <span className="text-pg-cream/25 uppercase tracking-[0.2em]">Ruang Tim</span>
+              <Link href="/kabar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
+                Kabar Gendis ↗
+              </Link>
+              <Link href="/data-gemar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
+                Data GeMar ↗
+              </Link>
+            </div>
+          </div>
           <p className="text-xs italic" style={{ color: "rgba(217,119,6,0.55)" }}>
             &ldquo;Lakukan untuk Tuhan, bukan sebatas untuk manusia&rdquo;
           </p>

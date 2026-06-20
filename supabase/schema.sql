@@ -70,3 +70,52 @@ alter table public.inquiries enable row level security;
 drop policy if exists "inquiries_insert_anon" on public.inquiries;
 create policy "inquiries_insert_anon" on public.inquiries
   for insert to anon with check (true);
+
+-- ------------------------------------------------------------
+-- 4) students  ->  data murid GeMar per lokasi (ruang internal /data-gemar)
+--    INSERT + SELECT publik (passcode-gated di level app, sama seperti Kabar).
+-- ------------------------------------------------------------
+create table if not exists public.students (
+  id          uuid primary key default gen_random_uuid(),
+  created_at  timestamptz not null default now(),
+  name        text not null,
+  location    text not null,
+  level       text,            -- TK / SD kelas 1..6
+  guardian    text,            -- nama ortu/wali (opsional)
+  note        text
+);
+
+alter table public.students enable row level security;
+
+drop policy if exists "students_insert_anon" on public.students;
+create policy "students_insert_anon" on public.students
+  for insert to anon with check (true);
+
+drop policy if exists "students_select_anon" on public.students;
+create policy "students_select_anon" on public.students
+  for select to anon using (true);
+
+-- ------------------------------------------------------------
+-- 5) attendance  ->  kehadiran murid per sesi (ruang internal /data-gemar)
+--    student_name didenormalisasi supaya feed tidak perlu join.
+-- ------------------------------------------------------------
+create table if not exists public.attendance (
+  id            uuid primary key default gen_random_uuid(),
+  created_at    timestamptz not null default now(),
+  session_date  date not null,
+  location      text not null,
+  student_id    uuid references public.students(id) on delete cascade,
+  student_name  text not null,
+  present       boolean not null default true,
+  note          text
+);
+
+alter table public.attendance enable row level security;
+
+drop policy if exists "attendance_insert_anon" on public.attendance;
+create policy "attendance_insert_anon" on public.attendance
+  for insert to anon with check (true);
+
+drop policy if exists "attendance_select_anon" on public.attendance;
+create policy "attendance_select_anon" on public.attendance
+  for select to anon using (true);
