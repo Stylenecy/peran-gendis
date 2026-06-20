@@ -53,3 +53,7 @@ skills-lock.json
 PROJECT_MASTER.md
 
 .vercel
+
+# kabar sync — data lokal (isi update internal/passcode-gated, JANGAN commit)
+scripts/kabar-synced.json
+scripts/kabar-sync-log.md
