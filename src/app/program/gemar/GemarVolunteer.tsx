@@ -19,7 +19,7 @@ const borderIdleCls = "border-pg-cream/15";
 const borderFocusCls = "focus:border-pg-gold";
 
 export default function GemarVolunteer() {
-  const [form, setForm] = useState({ name: "", phone: "", availability: "Minggu", location: "Kampoeng Mataraman", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", availability: "Minggu", location: "Balai Budaya Karangkitri (Kedai Tanya)", message: "" });
   const [status, setStatus] = useState<FormState>("idle");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -271,8 +271,8 @@ export default function GemarVolunteer() {
                       className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
                       style={{ background: "#0d0118" }}
                     >
-                      <option value="Minggu">Setiap Minggu (Kampoeng Mataraman)</option>
-                      <option value="Senin">Setiap Senin (RTHP Klitren / Kedai Tanya)</option>
+                      <option value="Minggu">Setiap Minggu (Kedai Tanya / Kelurahan Klitren)</option>
+                      <option value="Senin">Setiap Senin (Omah Kopi Tunggak / RTHP Klitren / Sokonandi)</option>
                       <option value="Keduanya">Keduanya</option>
                     </select>
                     <select
@@ -282,9 +282,11 @@ export default function GemarVolunteer() {
                       className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
                       style={{ background: "#0d0118" }}
                     >
-                      <option value="Kampoeng Mataraman">Kampoeng Mataraman — Bantul</option>
-                      <option value="RTHP Klitren Lor">RTHP Klitren Lor — Yogyakarta</option>
-                      <option value="Kedai Tanya">Kedai Tanya — Sleman</option>
+                      <option value="Balai Budaya Karangkitri (Kedai Tanya)">Balai Budaya Karangkitri (Kedai Tanya) — Panggungharjo, Bantul</option>
+                      <option value="Omah Kopi Tunggak">Omah Kopi Tunggak — Sleman (Berbah)</option>
+                      <option value="RTHP Klitren">RTHP Klitren — Kota Yogyakarta</option>
+                      <option value="Kantor Kelurahan Klitren">Kantor Kelurahan Klitren — Kota Yogyakarta</option>
+                      <option value="SD Muhammadiyah Sokonandi">SD Muhammadiyah Sokonandi — Gunungketur, Kota Yogyakarta</option>
                     </select>
                     <textarea
                       rows={3}

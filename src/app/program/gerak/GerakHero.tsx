@@ -88,7 +88,7 @@ export default function GerakHero() {
             4 Aksi Terlaksana
           </div>
           <div className="px-5 py-2.5 border text-sm font-light text-pg-cream/50" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
-            6 Direncanakan 2026
+            7 Direncanakan 2026
           </div>
         </motion.div>
 

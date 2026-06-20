@@ -4,7 +4,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 
 const completed = [
-  { name: "GeRak × EmpowerHer", loc: "Yayasan Lenetra", focus: "Pendampingan anak dengan HIV" },
+  { name: "GeRak × EmpowerHer", loc: "Yayasan Lentera, Surakarta", focus: "Pendampingan anak dengan HIV" },
   { name: "GeRak × Komunitas Resan", loc: "Gunungkidul", focus: "Pembuatan Pojok Buku" },
   { name: "GeRak × Petani Kharisma", loc: "Yogyakarta", focus: "Edukasi pertanian komunitas" },
   { name: "GeRak Diskusi Buku", loc: "Yogyakarta", focus: "Literasi & dialog terbuka" },
@@ -18,7 +18,6 @@ const planned = [
   'GeRak "Kelompok Tani Kharisma"',
   'GeRak "Audiensi dengan DPRD DIY"',
   'GeRak × Yayasan Sayap Ibu — Pengajaran Soft & Hard Skill (Juni–Agustus)',
-  'Piring Gendis — Aksi sosial berbagi pangan kepada kelompok rentan',
 ];
 
 export default function GerakEvents() {

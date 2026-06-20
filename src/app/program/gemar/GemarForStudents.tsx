@@ -3,10 +3,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const subjects = [
-  { subject: "Calistung",      detail: "Membaca, menulis, berhitung dasar (TK A & B)" },
+  { subject: "Matematika",     detail: "Berhitung dan logika dasar (TK–SD)" },
   { subject: "IPAS",           detail: "Ilmu Pengetahuan Alam & Sosial (SD)" },
   { subject: "Bahasa Inggris", detail: "Fondasi untuk dunia yang lebih luas (semua kelas)" },
-  { subject: "Bahasa Indonesia", detail: "Literasi dasar dan pemahaman teks (SD)" },
 ];
 
 export default function GemarForStudents() {

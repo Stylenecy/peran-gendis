@@ -4,16 +4,25 @@ import { motion } from "framer-motion";
 const locations = [
   {
     number: "01",
-    name: "Kampoeng Mataraman",
-    area: "Bantul (Panggunghardjo)",
+    name: "Balai Budaya Karangkitri (Kedai Tanya)",
+    area: "Panggungharjo, Bantul",
     day: "Setiap Minggu",
     time: "16:00 – 17:30 WIB",
-    note: "Suasana pedesaan, ruang terbuka dengan nuansa Jawa klasik",
-    mapsUrl: "https://share.google/QsgLzVltUNP9jqsbn",
+    note: "Balai budaya warga, ruang berkumpul terbuka untuk komunitas",
+    mapsUrl: "https://share.google/1Y8o2rpGJL1xYrWLD",
   },
   {
     number: "02",
-    name: "RTHP Klitren Lor",
+    name: "Omah Kopi Tunggak",
+    area: "Sleman (Berbah)",
+    day: "Setiap Senin",
+    time: "16:00 – 17:30 WIB",
+    note: "Kedai kopi yang nyaman, suasana santai untuk belajar bersama",
+    mapsUrl: "https://share.google/0qbeShnocGFvt4NjS",
+  },
+  {
+    number: "03",
+    name: "RTHP Klitren",
     area: "Kota Yogyakarta",
     day: "Setiap Senin",
     time: "16:00 – 17:30 WIB",
@@ -21,13 +30,22 @@ const locations = [
     mapsUrl: "https://share.google/T0GLGGVgP9QpGKydO",
   },
   {
-    number: "03",
-    name: "Kedai Tanya",
-    area: "Sleman",
-    day: "Setiap Senin",
+    number: "04",
+    name: "Kantor Kelurahan Klitren",
+    area: "Kota Yogyakarta",
+    day: "Setiap Minggu",
     time: "16:00 – 17:30 WIB",
-    note: "Lokasi aktif baru, hangat dan terbuka untuk komunitas",
-    mapsUrl: "https://share.google/FLxAayLHi02mQshlS",
+    note: "Ruang kantor kelurahan, dukungan resmi dari pemerintah setempat",
+    mapsUrl: "https://share.google/7GbgK1op2eUAqVn1V",
+  },
+  {
+    number: "05",
+    name: "SD Muhammadiyah Sokonandi",
+    area: "Gunungketur, Kota Yogyakarta",
+    day: "Setiap Senin (tentatif)",
+    time: "16:00 – 17:30 WIB",
+    note: "Lingkungan sekolah dasar, jadwal masih tentatif",
+    mapsUrl: "https://share.google/xz1IQfuhqbHd0J2Ij",
   },
 ];
 
@@ -49,7 +67,7 @@ export default function GemarLocations() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="block text-pg-gold text-xs tracking-[0.3em] uppercase mb-6"
             >
-              3 Lokasi Aktif
+              5 Lokasi Aktif
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}

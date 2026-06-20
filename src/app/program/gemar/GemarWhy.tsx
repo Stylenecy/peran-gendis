@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const stats = [
   { number: "12.956", label: "anak tidak bersekolah di DIY",  sub: "BPMP DIY & BPS, 2025" },
-  { number: "4",      label: "lokasi bimbel aktif",           sub: "dan terus berkembang" },
+  { number: "5",      label: "lokasi bimbel aktif",           sub: "dan terus berkembang" },
   { number: "1",      label: "sesi sudah dimulai",            sub: "17 Mei 2026" },
 ];
 

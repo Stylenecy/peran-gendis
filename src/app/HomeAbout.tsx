@@ -10,7 +10,7 @@ const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
 
 const stats = [
   { end: 4, label: "Program Kerja", suffix: "" },
-  { end: 4, label: "Lokasi GeMar", suffix: "" },
+  { end: 5, label: "Lokasi GeMar", suffix: "" },
   { end: 2026, label: "Tahun Berdiri", duration: 1.5 },
 ];
 
@@ -125,7 +125,7 @@ export default function HomeAbout() {
 
           <AnimatedSection direction="right" delay={0.12}>
             <p className="text-pg-cream/30 text-lg leading-relaxed mb-10">
-              Didirikan awal 2026 oleh empat perempuan yang percaya bahwa
+              Didirikan awal 2026 oleh empat anak muda yang percaya bahwa
               langkah kecil bisa menjadi awal perubahan lebih baik.
             </p>
             <Link
