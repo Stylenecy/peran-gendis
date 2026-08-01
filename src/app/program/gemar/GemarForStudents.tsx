@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const subjects = [
-  { subject: "Matematika",     detail: "Berhitung dan logika dasar (TK–SD)" },
+  { subject: "Matematika",     detail: "Berhitung dan logika dasar (TKâ€“SD)" },
   { subject: "IPAS",           detail: "Ilmu Pengetahuan Alam & Sosial (SD)" },
   { subject: "Bahasa Inggris", detail: "Fondasi untuk dunia yang lebih luas (semua kelas)" },
 ];
@@ -11,10 +11,10 @@ const subjects = [
 export default function GemarForStudents() {
   return (
     <section className="relative overflow-hidden">
-      {/* Full-bleed 50/50 split — no centering container */}
+      {/* Full-bleed 50/50 split â€” no centering container */}
       <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen md:min-h-0">
 
-        {/* Left panel — deep dark */}
+        {/* Left panel â€” deep dark */}
         <div
           className="relative flex flex-col justify-center px-8 md:px-16 py-24 md:py-36"
           style={{ background: "#1a0533" }}
@@ -52,7 +52,7 @@ export default function GemarForStudents() {
             className="mt-8 text-base md:text-lg leading-relaxed max-w-sm text-pg-cream-warm/75"
             style={{ fontWeight: 300 }}
           >
-            GeMar terbuka untuk semua anak TK sampai SD kelas 6, usia 5–12 tahun,
+            GeMar terbuka untuk semua anak TK sampai SD kelas 6, usia 5â€“12 tahun,
             di Yogyakarta. Tidak ada tes masuk. Tidak ada biaya tersembunyi.
           </motion.p>
 
@@ -66,7 +66,7 @@ export default function GemarForStudents() {
             style={{ height: "220px" }}
           >
             <Image
-              src="/photos/gemar-outdoor.jpg"
+              src="/photos/gemar-outdoor.webp"
               alt="Anak-anak belajar dengan penuh semangat di luar ruangan"
               fill
               className="object-cover"
@@ -82,7 +82,7 @@ export default function GemarForStudents() {
           </motion.div>
         </div>
 
-        {/* Right panel — purple */}
+        {/* Right panel â€” purple */}
         <div
           className="flex flex-col justify-center px-8 md:px-16 py-24 md:py-36"
           style={{ background: "#3b1263" }}
@@ -124,7 +124,7 @@ export default function GemarForStudents() {
               ))}
             </div>
 
-            {/* Payment note — amber left-border sidebar */}
+            {/* Payment note â€” amber left-border sidebar */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +137,7 @@ export default function GemarForStudents() {
               </p>
               <p className="text-sm leading-relaxed text-pg-cream-warm/70" style={{ fontWeight: 300 }}>
                 Jika kamu mau berbagi, bawa baju bekas atau buku layak pakai.
-                Itu bukan syarat — itu pilihan. Bawa semangat belajar saja sudah cukup.
+                Itu bukan syarat â€” itu pilihan. Bawa semangat belajar saja sudah cukup.
               </p>
             </motion.div>
 
@@ -156,7 +156,7 @@ export default function GemarForStudents() {
                 className="inline-block text-sm font-semibold px-6 py-3 bg-pg-gold text-pg-darkest hover:bg-pg-gold-light transition-all duration-300 hover:translate-x-1"
                 style={{ letterSpacing: "0.05em" }}
               >
-                Daftarkan Anakmu →
+                Daftarkan Anakmu â†’
               </a>
             </motion.div>
           </motion.div>

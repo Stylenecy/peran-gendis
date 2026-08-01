@@ -5,8 +5,8 @@ import Image from "next/image";
 
 // Data Structure
 const timInti = [
-  { name: "Arion Sudibyo", image: "/photos/personil/Arion-Sudibyo.png" },
-  { name: "Jurita", image: "/photos/personil/Jurita.png" },
+  { name: "Arion Sudibyo", image: "/photos/personil/Arion-Sudibyo.webp" },
+  { name: "Jurita", image: "/photos/personil/Jurita.webp" },
   { name: "Eunica", image: null },
   { name: "Aurellicha", image: null },
   { name: "Zaki", image: null },
@@ -15,8 +15,8 @@ const timInti = [
 ];
 
 const volunteerGemar = [
-  { name: "Farhani Kholilah", image: "/photos/personil/Farhani-Kholilah.png" },
-  { name: "Syahda Tsaqif", image: "/photos/personil/Syahda-Tsaqif.png" },
+  { name: "Farhani Kholilah", image: "/photos/personil/Farhani-Kholilah.webp" },
+  { name: "Syahda Tsaqif", image: "/photos/personil/Syahda-Tsaqif.webp" },
   { name: "Rizqia Azkiya", image: null },
   { name: "Maria Imanuella Ratna", image: null },
   { name: "Zahraa Putri", image: null },
@@ -27,9 +27,9 @@ const volunteerGemar = [
 ];
 
 const coFounders = [
-  { name: "Martha Angelina Gunawan", image: "/photos/personil/Martha-Angelina.png" },
+  { name: "Martha Angelina Gunawan", image: "/photos/personil/Martha-Angelina.webp" },
   { name: "Nadila Salwa", image: null },
-  { name: "Vincentius Rian", image: "/photos/personil/Vincentius-Rian.png" }
+  { name: "Vincentius Rian", image: "/photos/personil/Vincentius-Rian.webp" }
 ];
 
 const MemberCard = ({ name, role, image, isLarge = false }: { name: string; role: string; image: string | null; isLarge?: boolean }) => (
@@ -128,7 +128,7 @@ export default function TimTree() {
                 <MemberCard 
                   name="Marelta Putri Prihantoro" 
                   role="Founder" 
-                  image="/photos/personil/Marelta-Putri.png" 
+                  image="/photos/personil/Marelta-Putri.webp" 
                   isLarge={true} 
                 />
               </div>
@@ -185,7 +185,7 @@ export default function TimTree() {
                 <MemberCard 
                   name="Dex Bennett" 
                   role="Lead Web Developer" 
-                  image="/photos/personil/Dex-Bennett.png" 
+                  image="/photos/personil/Dex-Bennett.webp" 
                 />
               </div>
             </AnimatedSection>
@@ -235,7 +235,7 @@ export default function TimTree() {
                 </h2>
                 <div className="h-px w-24 bg-pg-gold/50 mb-4" />
                 <p className="text-pg-cream/60 font-light text-sm tracking-wide">
-                  Mereka yang turun langsung — mengajar, mendampingi, dan menghadirkan ruang belajar bagi anak-anak Yogyakarta.
+                  Mereka yang turun langsung â€” mengajar, mendampingi, dan menghadirkan ruang belajar bagi anak-anak Yogyakarta.
                 </p>
               </AnimatedSection>
             </div>

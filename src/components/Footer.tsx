@@ -12,7 +12,7 @@ const programs = [
 const contacts = [
   { href: "https://instagram.com/peran.gendis", label: "@peran.gendis", external: true },
   { href: "mailto:perangendis@gmail.com", label: "perangendis@gmail.com", external: false },
-  { href: "https://wa.me/6285865193598", label: "WhatsApp — Marel", external: true },
+  { href: "https://wa.me/6285865193598", label: "WhatsApp â€” Marel", external: true },
 ];
 
 export default function Footer() {
@@ -48,7 +48,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <div className="w-9 h-9 overflow-hidden shrink-0 ring-1 ring-pg-gold/25">
                 <Image
-                  src="/logo.jpg"
+                  src="/logo.webp"
                   alt="Peran Gendis"
                   width={36}
                   height={36}
@@ -107,20 +107,20 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="px-8 md:px-12 pb-8 border-t border-white/8 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div className="flex flex-col gap-2">
-            <p className="text-xs text-pg-cream/30">© 2026 Peran Gendis. Semua hak dilindungi.</p>
+            <p className="text-xs text-pg-cream/30">Â© 2026 Peran Gendis. Semua hak dilindungi.</p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
               <span className="text-pg-cream/25 uppercase tracking-[0.2em]">Ruang Tim</span>
               <Link href="/laporan" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
-                Laporan ↗
+                Laporan â†—
               </Link>
               <Link href="/kabar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
-                Kabar Gendis ↗
+                Kabar Gendis â†—
               </Link>
               <Link href="/data-gemar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
-                Data GeMar ↗
+                Data GeMar â†—
               </Link>
               <Link href="/aset" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
-                Aset ↗
+                Aset â†—
               </Link>
             </div>
           </div>

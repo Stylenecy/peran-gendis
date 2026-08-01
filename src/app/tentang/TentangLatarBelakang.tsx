@@ -11,7 +11,7 @@ export default function TentangLatarBelakang() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/photos/20260517_170611.jpg"
+          src="/photos/gemar-tutoring.webp"
           alt="Kegiatan Peran Gendis"
           fill
           className="object-cover object-center opacity-40 mix-blend-overlay"
@@ -41,7 +41,7 @@ export default function TentangLatarBelakang() {
               &ldquo;Lakukan untuk Tuhan, bukan sebatas untuk manusia.&rdquo;
             </p>
             <p className="text-xs tracking-[0.3em] uppercase text-pg-gold mt-4 font-semibold">
-              — Motto Peran Gendis
+              â€” Motto Peran Gendis
             </p>
           </AnimatedSection>
         </div>
@@ -51,7 +51,7 @@ export default function TentangLatarBelakang() {
           <AnimatedSection direction="up" delay={0.3}>
             <div className="liquid-glass p-6 md:p-8 border-l-2 border-pg-gold/50 hover:border-pg-gold hover:box-glow transition-all duration-500">
               <p className="text-pg-cream/90 text-lg font-light leading-relaxed">
-                Peran Gendis lahir dari empat orang yang memilih untuk tidak berhenti bergerak — dan membangun komunitas ini secara independen.
+                Peran Gendis lahir dari empat orang yang memilih untuk tidak berhenti bergerak â€” dan membangun komunitas ini secara independen.
               </p>
             </div>
           </AnimatedSection>

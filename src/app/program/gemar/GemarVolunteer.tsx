@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 
 const requirements = [
   { label: "Follow Instagram",       detail: "@peran.gendis",                                    required: true },
-  { label: "Komitmen periode",        detail: "Juni – Agustus 2026",                              required: true },
+  { label: "Komitmen periode",        detail: "Juni â€“ Agustus 2026",                              required: true },
   { label: "Kemampuan mengajar",      detail: "Matematika, IPAS, atau Bahasa Inggris level SD",   required: true },
   { label: "Kontribusi operasional",  detail: "Rp15.000/bulan (opsional, bisa dinegosiasikan)",   required: false },
 ];
@@ -65,13 +65,13 @@ export default function GemarVolunteer() {
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-pg-gold" />
           <span className="text-pg-gold text-xs tracking-widest uppercase font-medium">
-            Batch 1 — Pendaftaran Dibuka
+            Batch 1 â€” Pendaftaran Dibuka
           </span>
         </motion.div>
 
         {/* Asymmetric 12-col layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-0">
-          {/* Left — pitch */}
+          {/* Left â€” pitch */}
           <div className="md:col-span-6 md:pr-16">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -106,7 +106,7 @@ export default function GemarVolunteer() {
               className="mt-4 text-base md:text-lg leading-relaxed text-pg-cream-warm/75"
               style={{ fontWeight: 300 }}
             >
-              Kami mencari relawan yang serius — yang hadir bukan karena CV, tapi
+              Kami mencari relawan yang serius â€” yang hadir bukan karena CV, tapi
               karena{" "}
               <em className="font-display text-pg-cream-warm">
                 mereka percaya anak-anak ini layak mendapatkan yang terbaik.
@@ -123,7 +123,7 @@ export default function GemarVolunteer() {
               style={{ height: "280px" }}
             >
               <Image
-                src="/photos/gemar-mentoring.jpg"
+                src="/photos/gemar-mentoring.webp"
                 alt="Relawan mendampingi anak belajar"
                 fill
                 className="object-cover"
@@ -145,7 +145,7 @@ export default function GemarVolunteer() {
             </motion.div>
           </div>
 
-          {/* Right — requirements + apply */}
+          {/* Right â€” requirements + apply */}
           <div
             className="md:col-span-6 md:pl-8 md:border-l"
             style={{ borderColor: "rgba(217,119,6,0.2)" }}
@@ -222,11 +222,11 @@ export default function GemarVolunteer() {
               >
                 <p className="text-sm font-semibold mb-1 text-pg-cream">Periode Batch 1</p>
                 <p className="font-display font-semibold text-lg text-pg-gold">
-                  Juni – Agustus 2026
+                  Juni â€“ Agustus 2026
                 </p>
               </motion.div>
 
-              {/* Apply block — inline form */}
+              {/* Apply block â€” inline form */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -282,11 +282,11 @@ export default function GemarVolunteer() {
                       className={`${inputCls} ${borderIdleCls} ${borderFocusCls}`}
                       style={{ background: "#0d0118" }}
                     >
-                      <option value="Balai Budaya Karangkitri (Kedai Tanya)">Balai Budaya Karangkitri (Kedai Tanya) — Panggungharjo, Bantul</option>
-                      <option value="Omah Kopi Tunggak">Omah Kopi Tunggak — Sleman (Berbah)</option>
-                      <option value="RTHP Klitren">RTHP Klitren — Kota Yogyakarta</option>
-                      <option value="Kantor Kelurahan Klitren">Kantor Kelurahan Klitren — Kota Yogyakarta</option>
-                      <option value="SD Muhammadiyah Sokonandi">SD Muhammadiyah Sokonandi — Gunungketur, Kota Yogyakarta</option>
+                      <option value="Balai Budaya Karangkitri (Kedai Tanya)">Balai Budaya Karangkitri (Kedai Tanya) â€” Panggungharjo, Bantul</option>
+                      <option value="Omah Kopi Tunggak">Omah Kopi Tunggak â€” Sleman (Berbah)</option>
+                      <option value="RTHP Klitren">RTHP Klitren â€” Kota Yogyakarta</option>
+                      <option value="Kantor Kelurahan Klitren">Kantor Kelurahan Klitren â€” Kota Yogyakarta</option>
+                      <option value="SD Muhammadiyah Sokonandi">SD Muhammadiyah Sokonandi â€” Gunungketur, Kota Yogyakarta</option>
                     </select>
                     <textarea
                       rows={3}
@@ -303,7 +303,7 @@ export default function GemarVolunteer() {
                       disabled={status === "loading"}
                       className="w-full py-4 px-5 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
                     >
-                      {status === "loading" ? "Mengirim..." : "Daftar Sekarang →"}
+                      {status === "loading" ? "Mengirim..." : "Daftar Sekarang â†’"}
                     </button>
                     <p className="text-center text-xs text-pg-cream/30">
                       atau{" "}

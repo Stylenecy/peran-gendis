@@ -34,7 +34,7 @@ export default function Navbar() {
             >
               <div className="w-9 h-9 rounded-full overflow-hidden bg-pg-cream flex items-center justify-center shrink-0">
                 <Image
-                  src="/logo.jpg"
+                  src="/logo.webp"
                   alt="Logo Peran Gendis"
                   width={36}
                   height={36}

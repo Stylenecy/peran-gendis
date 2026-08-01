@@ -11,7 +11,7 @@ export default function TentangFilosofi() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/photos/IMG_8258.jpg"
+          src="/photos/gemar-classroom.webp"
           alt="Filosofi Peran Gendis"
           fill
           className="object-cover object-center opacity-40 mix-blend-luminosity"
@@ -94,7 +94,7 @@ export default function TentangFilosofi() {
                 Makna Logo
               </h3>
               <p className="text-base text-pg-cream/70 font-light leading-relaxed mb-8 max-w-[40ch] relative z-10">
-                Kombinasi yang mencerminkan komunitas yang hangat—tapi tidak ragu untuk kritis ketika harus.
+                Kombinasi yang mencerminkan komunitas yang hangatâ€”tapi tidak ragu untuk kritis ketika harus.
               </p>
 
               <div className="space-y-8 mt-auto relative z-10">

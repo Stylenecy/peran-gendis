@@ -4,25 +4,25 @@ import Image from "next/image";
 
 const photos = [
   {
-    src: "/photos/gemar-group.jpg",
-    caption: "Sesi perdana, 17 Mei 2026 — Kampoeng Mataram, Bantul",
+    src: "/photos/gemar-group.webp",
+    caption: "Sesi perdana, 17 Mei 2026 â€” Kampoeng Mataram, Bantul",
     alt: "Relawan dan anak-anak di sesi perdana GeMar",
     size: "tall",
   },
   {
-    src: "/photos/gemar-tutoring.jpg",
+    src: "/photos/gemar-tutoring.webp",
     caption: "Belajar satu-satu: kehadiran yang nyata",
     alt: "Relawan mendampingi satu anak dalam sesi belajar",
     size: "wide",
   },
   {
-    src: "/photos/gemar-kids-art.jpg",
-    caption: "Hasil karya anak-anak — kreativitas tanpa batas",
+    src: "/photos/gemar-kids-art.webp",
+    caption: "Hasil karya anak-anak â€” kreativitas tanpa batas",
     alt: "Anak-anak menunjukkan hasil karya mereka",
     size: "square",
   },
   {
-    src: "/photos/gemar-classroom.jpg",
+    src: "/photos/gemar-classroom.webp",
     caption: "Mewarnai dunia mereka sendiri",
     alt: "Anak-anak mewarnai di ruang kelas",
     size: "square",
@@ -64,13 +64,13 @@ export default function GemarDocumentary() {
             style={{ fontWeight: 300 }}
           >
             Foto-foto ini diambil saat sesi pertama GeMar, 17 Mei 2026.
-            Ini bukan photoshoot — ini dokumentasi hari pertama kerja nyata kami.
+            Ini bukan photoshoot â€” ini dokumentasi hari pertama kerja nyata kami.
           </motion.p>
         </div>
 
         {/* Masonry grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
-          {/* Photo 1 — 5 col tall */}
+          {/* Photo 1 â€” 5 col tall */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export default function GemarDocumentary() {
             <div className="absolute top-0 left-0 w-6 h-6 bg-pg-gold" />
           </motion.div>
 
-          {/* Photo 2 — 7 col wide */}
+          {/* Photo 2 â€” 7 col wide */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function GemarDocumentary() {
             </div>
           </motion.div>
 
-          {/* Photos 3 & 4 — 3 col each (offset under photo 2) */}
+          {/* Photos 3 & 4 â€” 3 col each (offset under photo 2) */}
           {[photos[2], photos[3]].map((photo, i) => (
             <motion.div
               key={photo.src}
@@ -165,7 +165,7 @@ export default function GemarDocumentary() {
             rel="noopener noreferrer"
             className="text-sm font-medium tracking-wider text-pg-gold hover:text-pg-gold-light transition-colors duration-300"
           >
-            @peran.gendis →
+            @peran.gendis â†’
           </a>
         </motion.div>
       </div>

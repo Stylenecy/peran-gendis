@@ -11,7 +11,7 @@ const founders = [
     role: "Co-Founder",
     tags: ["PJ Komisi Gender"],
     note: null,
-    image: "/photos/personil/Martha-Angelina.png",
+    image: "/photos/personil/Martha-Angelina.webp",
   },
   {
     name: "Nadila Salwa",
@@ -27,7 +27,7 @@ const founders = [
     role: "Co-Founder",
     tags: ["PJ Komisi Anak"],
     note: null,
-    image: "/photos/personil/Vincentius-Rian.png",
+    image: "/photos/personil/Vincentius-Rian.webp",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function TentangFounders() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/photos/20260517_164048.jpg"
+          src="/photos/gemar-outdoor.webp"
           alt="Founder Peran Gendis"
           fill
           className="object-cover object-center opacity-40 mix-blend-luminosity"
@@ -61,7 +61,7 @@ export default function TentangFounders() {
             </em>
           </h2>
           <p className="text-pg-cream/80 text-lg mt-6 font-light max-w-2xl mx-auto leading-relaxed">
-            Mereka memilih membangun gerakan secara independen—dengan aksi nyata di lapangan.
+            Mereka memilih membangun gerakan secara independenâ€”dengan aksi nyata di lapangan.
           </p>
         </AnimatedSection>
 
@@ -74,7 +74,7 @@ export default function TentangFounders() {
             {/* Photo Column - Using object-contain and bottom anchor to prevent blurring from zoom */}
             <div className="w-full md:w-[35%] h-[450px] relative shrink-0 border-b md:border-b-0 md:border-r border-pg-gold/20 overflow-hidden bg-gradient-to-t from-[#0d0118] to-transparent">
               <Image 
-                src="/photos/personil/Marelta-Putri.png" 
+                src="/photos/personil/Marelta-Putri.webp" 
                 alt="Marelta Putri Prihantoro" 
                 fill 
                 className="object-contain object-bottom filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
@@ -172,7 +172,7 @@ export default function TentangFounders() {
             className="group flex items-center justify-center gap-4 px-8 py-4 bg-pg-gold text-[#0d0118] hover:bg-pg-gold-light hover:box-glow transition-all duration-300 font-bold tracking-widest uppercase text-sm"
           >
             <span>Lihat Seluruh Anggota Tim</span>
-            <span className="group-hover:translate-x-2 transition-transform">→</span>
+            <span className="group-hover:translate-x-2 transition-transform">â†’</span>
           </Link>
         </AnimatedSection>
 
