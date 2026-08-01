@@ -110,11 +110,17 @@ export default function Footer() {
             <p className="text-xs text-pg-cream/30">© 2026 Peran Gendis. Semua hak dilindungi.</p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
               <span className="text-pg-cream/25 uppercase tracking-[0.2em]">Ruang Tim</span>
+              <Link href="/laporan" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
+                Laporan ↗
+              </Link>
               <Link href="/kabar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
                 Kabar Gendis ↗
               </Link>
               <Link href="/data-gemar" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
                 Data GeMar ↗
+              </Link>
+              <Link href="/aset" className="text-pg-cream/40 hover:text-pg-gold transition-colors">
+                Aset ↗
               </Link>
             </div>
           </div>

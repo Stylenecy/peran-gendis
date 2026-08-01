@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import DataGate from "./DataGate";
 import StudentSection from "./StudentSection";
 import AttendanceSection from "./AttendanceSection";
+import MaterialSection from "./MaterialSection";
+import TentorSection from "./TentorSection";
+import RoomNav from "@/components/internal/RoomNav";
 
-type Tab = "murid" | "kehadiran";
+type Tab = "murid" | "tentor" | "kehadiran" | "materi";
 
 export default function DataRoom() {
   const [ready, setReady] = useState(false);
@@ -34,7 +36,9 @@ export default function DataRoom() {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "murid", label: "Murid" },
+    { key: "tentor", label: "Tentor" },
     { key: "kehadiran", label: "Kehadiran" },
+    { key: "materi", label: "Materi" },
   ];
 
   return (
@@ -49,6 +53,7 @@ export default function DataRoom() {
           }}
         />
         <div className="relative max-w-3xl mx-auto px-6 md:px-8 pt-28 md:pt-32 pb-6 text-center">
+          <RoomNav />
           <span className="block text-pg-gold text-[11px] font-medium uppercase tracking-[0.3em]">
             Ruang Internal
           </span>
@@ -59,14 +64,8 @@ export default function DataRoom() {
             Data GeMar
           </h1>
           <p className="mt-4 font-body font-light text-pg-cream/60 text-sm md:text-base">
-            Catat murid &amp; kehadiran tiap lokasi. Biar tumbuh kembang kelas kelihatan.
+            Murid, tentor, kehadiran &amp; materi tiap lokasi. Biar tumbuh kembang kelas kelihatan.
           </p>
-          <Link
-            href="/kabar"
-            className="mt-5 inline-block text-[11px] uppercase tracking-[0.25em] text-pg-cream/40 hover:text-pg-gold transition-colors"
-          >
-            ← Kabar Gendis
-          </Link>
         </div>
 
         {/* Tabs */}
@@ -96,13 +95,24 @@ export default function DataRoom() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        {tab === "murid" ? (
+        {tab === "murid" && (
           <StudentSection
             refreshToken={refreshToken}
             onChange={() => setRefreshToken((t) => t + 1)}
           />
-        ) : (
-          <AttendanceSection refreshToken={refreshToken} />
+        )}
+        {tab === "tentor" && (
+          <TentorSection
+            refreshToken={refreshToken}
+            onChange={() => setRefreshToken((t) => t + 1)}
+          />
+        )}
+        {tab === "kehadiran" && <AttendanceSection refreshToken={refreshToken} />}
+        {tab === "materi" && (
+          <MaterialSection
+            refreshToken={refreshToken}
+            onChange={() => setRefreshToken((t) => t + 1)}
+          />
         )}
       </motion.div>
     </main>

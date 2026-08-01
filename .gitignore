@@ -43,6 +43,10 @@ next-env.d.ts
 # credentials
 Pass-Supabase.txt
 
+# transcript log sesi — memuat isi .env.local (anon key JWT) hasil paste terminal.
+# Repo ini PUBLIC: jangan pernah di-commit. File tetap ada di disk lokal.
+last-progress_*.md
+
 # agent & AI tooling
 .agent/
 .agents/

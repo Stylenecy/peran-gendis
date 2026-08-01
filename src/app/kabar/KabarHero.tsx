@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import RoomNav from "@/components/internal/RoomNav";
 
 export default function KabarHero() {
   return (
@@ -17,6 +18,7 @@ export default function KabarHero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-3xl">
+        <RoomNav />
         {/* Small amber label */}
         <motion.span
           initial={{ opacity: 0, y: -12 }}

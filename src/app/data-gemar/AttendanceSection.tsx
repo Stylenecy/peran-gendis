@@ -2,9 +2,19 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { LOCATIONS, inputCls, labelCls, type Student, type Attendance } from "./constants";
+import {
+  LOCATIONS,
+  IURAN_DEFAULT,
+  inputCls,
+  labelCls,
+  type Student,
+  type Attendance,
+  type Tentor,
+} from "./constants";
 
 type FormState = "idle" | "loading" | "success" | "error";
+
+const rupiah = (n: number) => "Rp" + n.toLocaleString("id-ID");
 
 export default function AttendanceSection({ refreshToken }: { refreshToken: number }) {
   const [sessionDate, setSessionDate] = useState("");
@@ -13,6 +23,12 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
   const [present, setPresent] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<FormState>("idle");
   const [recent, setRecent] = useState<Attendance[]>([]);
+
+  // Tentor + iuran
+  const [tentors, setTentors] = useState<Tentor[]>([]);
+  const [tentorPresent, setTentorPresent] = useState<Record<string, boolean>>({});
+  const [iuran, setIuran] = useState("");
+  const [iuranTouched, setIuranTouched] = useState(false);
 
   // Set tanggal default = hari ini (client-only, hindari hydration mismatch)
   useEffect(() => {
@@ -38,6 +54,20 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
     })();
   }, [location]);
 
+  // Muat semua tentor aktif sekali (tentor bisa ngajar lintas lokasi)
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase
+        .from("tentors")
+        .select("*")
+        .eq("active", true)
+        .order("name", { ascending: true });
+      const list = (data as Tentor[]) || [];
+      setTentors(list);
+      setTentorPresent(Object.fromEntries(list.map((t) => [t.id, false])));
+    })();
+  }, [refreshToken]);
+
   const fetchRecent = useCallback(async () => {
     const { data } = await supabase
       .from("attendance")
@@ -55,29 +85,63 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
   function toggle(id: string) {
     setPresent((p) => ({ ...p, [id]: !p[id] }));
   }
+  function toggleTentor(id: string) {
+    setTentorPresent((p) => ({ ...p, [id]: !p[id] }));
+  }
+
+  const presentCount = roster.filter((s) => present[s.id]).length;
+  const tentorPresentCount = tentors.filter((t) => tentorPresent[t.id]).length;
+
+  // Iuran tersaran = jumlah tentor hadir × Rp15.000 (boleh dioverride)
+  const suggestedIuran = tentorPresentCount * IURAN_DEFAULT;
+  const iuranValue = iuranTouched ? iuran : suggestedIuran ? String(suggestedIuran) : "";
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
     if (!sessionDate || !location || roster.length === 0) return;
     setStatus("loading");
-    const rows = roster.map((s) => ({
+
+    // 1) Kehadiran murid (semua murid lokasi ini, dengan flag present)
+    const studentRows = roster.map((s) => ({
       session_date: sessionDate,
       location,
       student_id: s.id,
       student_name: s.name,
       present: !!present[s.id],
     }));
-    const { error } = await supabase.from("attendance").insert(rows);
-    if (error) {
+    const { error: e1 } = await supabase.from("attendance").insert(studentRows);
+    if (e1) {
       setStatus("error");
       return;
     }
+
+    // 2) Presensi tentor — hanya yang hadir (KPI keaktifan)
+    const tentorRows = tentors
+      .filter((t) => tentorPresent[t.id])
+      .map((t) => ({
+        session_date: sessionDate,
+        location,
+        tentor_id: t.id,
+        tentor_name: t.name,
+        present: true,
+      }));
+    if (tentorRows.length > 0) {
+      await supabase.from("tentor_attendance").insert(tentorRows);
+    }
+
+    // 3) Meta sesi + iuran agregat (insert-only; dashboard ambil yg terbaru)
+    const iuranNum = parseInt(iuranValue || "0", 10) || 0;
+    await supabase
+      .from("sessions")
+      .insert([{ session_date: sessionDate, location, iuran: iuranNum }]);
+
     setStatus("success");
+    setIuranTouched(false);
+    setIuran("");
+    setTentorPresent(Object.fromEntries(tentors.map((t) => [t.id, false])));
     fetchRecent();
     setTimeout(() => setStatus("idle"), 2500);
   }
-
-  const presentCount = roster.filter((s) => present[s.id]).length;
 
   // Ringkas recent: kelompokkan per (tanggal|lokasi)
   const grouped = Object.values(
@@ -100,7 +164,7 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
         className="p-6 md:p-8 space-y-6"
         style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
       >
-        <h2 className="font-display text-xl text-pg-cream">Catat Kehadiran</h2>
+        <h2 className="font-display text-xl text-pg-cream">Catat Sesi</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
@@ -189,11 +253,86 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
           )
         )}
 
+        {/* Checklist tentor */}
+        {location && (
+          <div>
+            <div className="flex items-baseline justify-between mb-3">
+              <span className={labelCls}>Tentor yang ngajar</span>
+              <span className="text-xs text-pg-gold">{tentorPresentCount} tentor</span>
+            </div>
+            {tentors.length === 0 ? (
+              <p className="text-sm text-pg-cream/40">
+                Belum ada tentor. Tambah dulu di tab Tentor.
+              </p>
+            ) : (
+              <ul className="space-y-2">
+                {tentors.map((t) => {
+                  const on = !!tentorPresent[t.id];
+                  return (
+                    <li key={t.id}>
+                      <button
+                        type="button"
+                        onClick={() => toggleTentor(t.id)}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left transition-colors"
+                        style={{
+                          background: on ? "rgba(217,119,6,0.12)" : "#0d0118",
+                          border: on
+                            ? "1px solid rgba(217,119,6,0.45)"
+                            : "1px solid rgba(245,230,200,0.1)",
+                        }}
+                      >
+                        <span
+                          className="flex h-5 w-5 shrink-0 items-center justify-center"
+                          style={{
+                            background: on ? "#d97706" : "transparent",
+                            border: on ? "none" : "1px solid rgba(245,230,200,0.3)",
+                          }}
+                        >
+                          {on && (
+                            <svg width="12" height="12" viewBox="0 0 18 18" fill="none">
+                              <path d="M3.5 9.5L7 13L14.5 5" stroke="#0d0118" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          )}
+                        </span>
+                        <span className={on ? "text-pg-cream" : "text-pg-cream/50"}>{t.name}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        )}
+
+        {/* Iuran terkumpul */}
+        {location && (
+          <div>
+            <label htmlFor="a-iuran" className={labelCls}>Iuran terkumpul (Rp)</label>
+            <input
+              id="a-iuran"
+              type="number"
+              min={0}
+              step={1000}
+              inputMode="numeric"
+              placeholder="0"
+              value={iuranValue}
+              onChange={(e) => {
+                setIuran(e.target.value);
+                setIuranTouched(true);
+              }}
+              className={inputCls}
+            />
+            <p className="mt-2 text-[11px] text-pg-cream/40">
+              Tersaran {rupiah(suggestedIuran)} ({tentorPresentCount} tentor × {rupiah(IURAN_DEFAULT)}). Boleh diubah.
+            </p>
+          </div>
+        )}
+
         {status === "error" && (
           <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Kehadiran tersimpan ✓</p>
+          <p className="text-sm text-pg-gold-light">Sesi tersimpan ✓</p>
         )}
 
         <button
@@ -201,7 +340,7 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
           disabled={status === "loading" || !location || roster.length === 0}
           className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-50 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
-          {status === "loading" ? "Menyimpan..." : "Simpan Kehadiran"}
+          {status === "loading" ? "Menyimpan..." : "Simpan Sesi"}
         </button>
       </form>
 

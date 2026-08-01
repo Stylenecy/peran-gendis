@@ -9,6 +9,13 @@ Sebelum mengerjakan apapun di project ini, baca dulu (urutan penting):
 
 ---
 
+## Aturan Sinkronisasi Handoff (Claude ↔ Gemini)
+
+- **Wajib Baca Keduanya**: Baca `CLAUDE.md` DAN `GEMINI.md` di folder ini untuk menyelaraskan instruksi pembangunan web.
+- **Progress Update**: Selalu update `.agent/memory/project_website_status.md` setiap kali ada fitur/halaman baru selesai.
+
+---
+
 ## Aturan Wajib
 
 - **Update `.agent/memory/project_website_status.md`** setiap kali ada halaman baru selesai atau keputusan baru dibuat
