@@ -22,7 +22,9 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE = "https://peran-gendis.vercel.app";
+// Alias produksi yang aktif di Vercel. Dipakai metadataBase supaya URL
+// gambar Open Graph absolut dan benar saat ditautkan di WhatsApp / IG.
+const SITE = "https://perangendis-web.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
