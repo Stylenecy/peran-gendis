@@ -76,11 +76,11 @@ export default function AsetSection({
       <form
         onSubmit={handleSubmit}
         className="p-6 md:p-8 space-y-6"
-        style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
+        style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
       >
         <div>
-          <h2 className="font-display text-xl text-pg-cream">Tambah Tautan / Aset</h2>
-          <p className="mt-1.5 text-sm text-pg-cream/50 font-body" style={{ fontWeight: 300 }}>
+          <h2 className="font-display text-xl text-pg-ink">Tambah Tautan / Aset</h2>
+          <p className="mt-1.5 text-sm text-pg-ink-mute font-body" style={{ fontWeight: 300 }}>
             Satu pintu ke semua Drive, Sheet, Form, Canva, sosmed. Biar nggak nyari di chat.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function AsetSection({
               value={form.category}
               onChange={(e) => update("category", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="" disabled>Pilih kategori</option>
               {ASSET_CATEGORIES.map((c) => (
@@ -155,16 +155,16 @@ export default function AsetSection({
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
+          <p className="text-sm text-pg-berry-deep">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Aset tersimpan ✓</p>
+          <p className="text-sm text-pg-berry">Aset tersimpan ✓</p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+          className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
           {status === "loading" ? "Menyimpan..." : "Simpan Aset"}
         </button>
@@ -173,10 +173,10 @@ export default function AsetSection({
       {/* Daftar aset */}
       <div className="mt-12">
         <div className="flex items-baseline justify-between mb-5">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry">
             Daftar Aset
           </h3>
-          <span className="text-xs text-pg-cream/40">{assets.length} aset</span>
+          <span className="text-xs text-pg-ink-mute">{assets.length} aset</span>
         </div>
 
         {/* Filter kategori */}
@@ -189,8 +189,8 @@ export default function AsetSection({
                 onClick={() => setFilter(c)}
                 className={`px-3 py-1.5 text-[11px] uppercase tracking-wider transition-all duration-200 ${
                   active
-                    ? "bg-pg-gold text-pg-darkest"
-                    : "text-pg-cream/50 hover:text-pg-cream border border-pg-cream/15"
+                    ? "bg-pg-berry text-pg-darkest"
+                    : "text-pg-ink-mute hover:text-pg-ink border border-pg-paper-3"
                 }`}
               >
                 {c}
@@ -200,38 +200,38 @@ export default function AsetSection({
         </div>
 
         {loadingList ? (
-          <p className="text-sm text-pg-cream/40">Memuat...</p>
+          <p className="text-sm text-pg-ink-mute">Memuat...</p>
         ) : assets.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">
+          <p className="text-sm text-pg-ink-mute">
             Belum ada aset. Tambah di atas, atau jalankan seed-assets.sql untuk pra-isi.
           </p>
         ) : byCategory.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">Tidak ada aset untuk filter ini.</p>
+          <p className="text-sm text-pg-ink-mute">Tidak ada aset untuk filter ini.</p>
         ) : (
           <div className="space-y-8">
             {byCategory.map((g) => (
               <div key={g.cat}>
-                <div className="flex items-baseline gap-3 mb-3 border-l-2 border-pg-gold pl-3">
-                  <span className="text-sm font-semibold text-pg-cream">{g.cat}</span>
-                  <span className="text-xs text-pg-cream/40">{g.items.length}</span>
+                <div className="flex items-baseline gap-3 mb-3 border-l-2 border-pg-berry pl-3">
+                  <span className="text-sm font-semibold text-pg-ink">{g.cat}</span>
+                  <span className="text-xs text-pg-ink-mute">{g.items.length}</span>
                 </div>
                 <ul className="space-y-2">
                   {g.items.map((a) => (
                     <li
                       key={a.id}
                       className="flex items-start justify-between gap-3 px-4 py-3"
-                      style={{ background: "#1a0533" }}
+                      style={{ background: "var(--color-pg-paper-2)" }}
                     >
                       <div className="min-w-0">
                         <a
                           href={a.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-pg-cream hover:text-pg-gold transition-colors"
+                          className="text-sm text-pg-ink hover:text-pg-berry transition-colors"
                         >
                           {a.label} ↗
                         </a>
-                        <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-pg-cream/40">
+                        <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-pg-ink-mute">
                           {a.owner && <span>{a.owner}</span>}
                           {a.note && <span>· {a.note}</span>}
                         </div>

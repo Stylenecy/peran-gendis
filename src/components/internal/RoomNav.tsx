@@ -25,8 +25,8 @@ export default function RoomNav() {
             href={r.href}
             className={`px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-200 ${
               active
-                ? "bg-pg-gold/15 text-pg-gold border border-pg-gold/40"
-                : "text-pg-cream/45 hover:text-pg-cream border border-pg-cream/12"
+                ? "bg-pg-berry-soft text-pg-berry border border-pg-berry/25"
+                : "text-pg-ink-mute hover:text-pg-ink border border-pg-paper-3"
             }`}
           >
             {r.label}
@@ -35,7 +35,7 @@ export default function RoomNav() {
       })}
       <Link
         href="/"
-        className="px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-pg-cream/30 hover:text-pg-cream/70 transition-colors duration-200"
+        className="px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-pg-ink-mute hover:text-pg-ink-soft transition-colors duration-200"
       >
         ← Situs
       </Link>

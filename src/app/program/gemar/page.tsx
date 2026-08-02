@@ -12,8 +12,7 @@ import GemarVolunteer from "./GemarVolunteer";
 export default function GeMar() {
   return (
     <div
-      className="relative bg-[#0d0118] text-white select-none"
-      style={{ colorScheme: "dark" }}
+      className="relative bg-pg-paper text-pg-ink"
     >
       <PageBg />
       <div className="relative z-10">
@@ -24,10 +23,10 @@ export default function GeMar() {
         <GemarLocations />
         <GemarVolunteer />
 
-        <section className="py-10 px-6 border-t border-pg-cream/5 text-center">
+        <section className="border-t border-pg-paper-3 px-6 py-10 text-center">
           <Link
             href="/program"
-            className="inline-flex items-center gap-2 text-pg-cream/25 text-[11px] tracking-[0.2em] uppercase hover:text-pg-cream/55 transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-pg-ink-soft transition-colors hover:text-pg-berry"
           >
             ← Lihat semua program
           </Link>

@@ -1,193 +1,105 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import AnimatedSection from "@/components/AnimatedSection";
+import Link from "next/link";
 
-const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-const programs = [
+/* Keterangan program & angka target berasal dari Core §8.
+   Catatan: GeRak = "Gendis Beraksi" (versi lama file ini menulis
+   "Gendis Bergerak" — tidak cocok dengan Core §8C). */
+const program = [
   {
-    href: "/program/gemar",
-    no: "01",
-    name: "GeMar",
-    full: "Gendis Mengajar",
-    desc: "Bimbel gratis TK–SD · 5 lokasi Yogyakarta",
-    stat: "12.956",
-    statLabel: "anak butuh akses pendidikan",
-    accent: "#d97706",
-    featured: true,
-  },
-  {
-    href: "/program/gerak",
-    no: "02",
-    name: "GeRak",
-    full: "Gendis Bergerak",
-    desc: "Aksi advokasi sosial · Turun ke lapangan",
-    stat: "11.441",
-    statLabel: "kasus kekerasan dalam 5 tahun",
-    accent: "#d97706",
-    featured: false,
-  },
-  {
+    nama: "Catatan Gendis",
+    arti: "Tulisan",
+    teks: "Catatan, artikel opini, dan tanggapan atas isu gender, anak, dan disabilitas — terbit tiap minggu di Instagram.",
+    angka: "5 edisi terbit",
     href: "/program/catatan",
-    no: "03",
-    name: "Catatan Gendis",
-    full: "Jurnal Aksi Komunitas",
-    desc: "Artikel opini & tanggapan isu · Setiap minggu",
-    stat: "5",
-    statLabel: "edisi terbit",
-    accent: "#b45309",
-    featured: false,
+  },
+  {
+    nama: "GeMar",
+    arti: "Gendis Mengajar",
+    teks: "Kelas belajar gratis untuk anak TK–SD di lima titik di Yogyakarta. Berjalan tiap Minggu dan Senin sore.",
+    angka: "Sejak 17 Mei 2026",
+    href: "/program/gemar",
+    utama: true,
+  },
+  {
+    nama: "GeRak",
+    arti: "Gendis Beraksi",
+    teks: "Aksi sosial tematik di lapangan — menyentuh langsung kelompok yang kami advokasi.",
+    angka: "Kolaborasi Sayap Ibu",
+    href: "/program/gerak",
+  },
+  {
+    nama: "KoPer",
+    arti: "Komunikasi Peran Gendis",
+    teks: "Wawancara dan pendapat dari ahli maupun teman sebaya, serta audiensi ke NGO dan dinas terkait.",
+    angka: "8 project/tahun",
+    href: "/program",
   },
 ];
 
 export default function HomePrograms() {
-  const [hovered, setHovered] = useState<number | null>(null);
-
   return (
     <section
-      className="relative overflow-hidden"
-      style={{ background: "#1a0533" }}
+      aria-labelledby="program-judul"
+      className="relative z-10 mx-auto max-w-5xl px-6 py-[var(--pg-rhythm)]"
     >
-      {/* Subtle top edge */}
-      <div className="h-px" style={{ background: "rgba(217,119,6,0.15)" }} />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: EASE }}
+        className="flex flex-wrap items-end justify-between gap-4"
+      >
+        <h2
+          id="program-judul"
+          className="font-display text-3xl leading-tight text-pg-ink md:text-5xl"
+        >
+          Empat cara kami bergerak
+        </h2>
+        <Link
+          href="/program"
+          className="inline-flex min-h-11 items-center text-[15px] font-semibold text-pg-berry underline underline-offset-4 hover:text-pg-berry-deep"
+        >
+          Lihat semua program →
+        </Link>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-20 pt-24 pb-20">
-        {/* Header */}
-        <AnimatedSection>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-20 gap-6">
-            <div>
-              <span
-                className="text-xs font-bold tracking-[0.35em] uppercase block mb-4 border-l-2 pl-4"
-                style={{ color: "#d97706", borderColor: "#d97706" }}
-              >
-                Program Kerja
-              </span>
-              <h2
-                className="font-display italic text-pg-cream leading-[0.88]"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", letterSpacing: "-0.04em" }}
-              >
-                Tiga cara<br />kami bergerak.
-              </h2>
-            </div>
+      <ul className="mt-12 grid gap-3 sm:grid-cols-2">
+        {program.map((p, i) => (
+          <motion.li
+            key={p.nama}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: i * 0.07, ease: EASE }}
+          >
             <Link
-              href="/program"
-              className="text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-2 shrink-0 self-end pb-1"
-              style={{ color: "rgba(217,119,6,0.6)" }}
+              href={p.href}
+              className={`group flex h-full flex-col rounded-[1.25rem] border p-6 transition-colors ${
+                p.utama
+                  ? "border-pg-berry/25 bg-pg-berry-soft hover:bg-pg-berry-soft/70"
+                  : "border-pg-paper-3 bg-white hover:bg-pg-paper-2/50"
+              }`}
             >
-              Lihat semua →
+              <div className="flex items-baseline gap-2.5">
+                <h3 className="font-display text-2xl font-semibold text-pg-ink">
+                  {p.nama}
+                </h3>
+                <span className="text-[13px] text-pg-ink-mute">{p.arti}</span>
+              </div>
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-pg-ink-soft">
+                {p.teks}
+              </p>
+              <p className="mt-5 text-[13px] font-semibold uppercase tracking-[0.12em] text-pg-berry">
+                {p.angka}
+              </p>
             </Link>
-          </div>
-        </AnimatedSection>
-
-        {/* Program rows — HUGE editorial */}
-        <div>
-          {programs.map(({ href, no, name, full, desc, stat, statLabel, accent, featured }, i) => (
-            <motion.div
-              key={href}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: EXPO_OUT }}
-              style={{
-                filter: hovered !== null && hovered !== i ? "blur(1.5px)" : "none",
-                opacity: hovered !== null && hovered !== i ? 0.3 : 1,
-                transition: "filter 0.35s ease, opacity 0.35s ease",
-              }}
-            >
-              <Link
-                href={href}
-                className="group relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-8 border-b overflow-hidden"
-                style={{ borderColor: "rgba(255,255,255,0.07)" }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                {/* Amber left-line sweep */}
-                <div
-                  className="absolute left-0 top-0 w-0.5 h-0 group-hover:h-full transition-all duration-500"
-                  style={{ background: accent }}
-                />
-
-                {/* Number */}
-                <span
-                  className="font-display font-bold shrink-0 w-10 pl-3"
-                  style={{ fontSize: "0.75rem", color: "rgba(217,119,6,0.25)", letterSpacing: "-0.01em" }}
-                >
-                  {no}
-                </span>
-
-                {/* HUGE name */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-4 flex-wrap">
-                    <h3
-                      className="font-display italic leading-none group-hover:translate-x-2 transition-transform duration-500"
-                      style={{
-                        fontSize: "clamp(2.8rem, 7vw, 6.5rem)",
-                        letterSpacing: "-0.03em",
-                        color: featured ? accent : "#fef3c7",
-                        transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1)",
-                      }}
-                    >
-                      {name}
-                    </h3>
-                    {featured && (
-                      <span
-                        className="text-[9px] font-bold tracking-[0.3em] uppercase px-2.5 py-1.5 shrink-0"
-                        style={{ background: "rgba(217,119,6,0.18)", color: "#d97706" }}
-                      >
-                        Aktif
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-4 mt-1">
-                    <span
-                      className="text-[10px] uppercase tracking-widest block"
-                      style={{ color: "rgba(254,243,199,0.18)" }}
-                    >
-                      {full}
-                    </span>
-                    <span style={{ color: "rgba(255,255,255,0.06)" }}>·</span>
-                    <span
-                      className="text-[10px] uppercase tracking-widest"
-                      style={{ color: "rgba(254,243,199,0.18)" }}
-                    >
-                      {desc}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right: stat + arrow */}
-                <div className="flex items-center gap-8 shrink-0">
-                  {stat && (
-                    <div className="hidden sm:block text-right">
-                      <span
-                        className="font-display font-bold block"
-                        style={{ fontSize: "clamp(1.2rem, 2vw, 1.8rem)", letterSpacing: "-0.03em", color: accent }}
-                      >
-                        {stat}
-                      </span>
-                      <span
-                        className="text-[9px] uppercase tracking-widest block leading-tight max-w-[14ch]"
-                        style={{ color: "rgba(254,243,199,0.2)" }}
-                      >
-                        {statLabel}
-                      </span>
-                    </div>
-                  )}
-                  <span
-                    className="text-xl group-hover:translate-x-2 transition-transform duration-500"
-                    style={{ color: accent }}
-                  >
-                    →
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+          </motion.li>
+        ))}
+      </ul>
     </section>
   );
 }

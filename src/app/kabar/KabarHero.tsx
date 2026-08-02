@@ -6,14 +6,14 @@ export default function KabarHero() {
   return (
     <section
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24 md:px-12"
-      style={{ background: "#0d0118" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 55% 50% at 50% 40%, rgba(59,18,99,0.55) 0%, transparent 70%)",
+            "radial-gradient(ellipse 55% 50% at 50% 40%, #fbe9f2 0%, transparent 70%)",
         }}
       />
 
@@ -24,7 +24,7 @@ export default function KabarHero() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="block text-pg-gold text-[11px] font-medium uppercase tracking-[0.3em] md:text-xs"
+          className="block text-pg-berry text-[11px] font-medium uppercase tracking-[0.3em] md:text-xs"
         >
           Ruang Internal — Tim Peran Gendis
         </motion.span>
@@ -35,7 +35,7 @@ export default function KabarHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-            className="font-display font-black leading-none text-pg-cream"
+            className="font-display font-black leading-none text-pg-ink"
             style={{
               fontSize: "clamp(2.6rem, 7vw, 5.5rem)",
               letterSpacing: "-0.03em",
@@ -47,7 +47,7 @@ export default function KabarHero() {
 
           {/* Amber underline accent */}
           <motion.div
-            className="absolute -bottom-3 left-0 h-0.5 bg-pg-gold"
+            className="absolute -bottom-3 left-0 h-0.5 bg-pg-berry"
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 0.9, delay: 0.9, ease: "easeOut" }}
@@ -59,11 +59,11 @@ export default function KabarHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="mt-10 font-display italic text-pg-cream-warm leading-snug"
+          className="mt-10 font-display italic text-pg-ink leading-snug"
           style={{ fontSize: "clamp(1.2rem, 3vw, 1.9rem)" }}
         >
           Satu tempat. Semua kabar.{" "}
-          <span className="text-pg-gold not-italic">Tidak ada yang hilang.</span>
+          <span className="text-pg-berry not-italic">Tidak ada yang hilang.</span>
         </motion.p>
 
         {/* Warm explainer for the team */}
@@ -71,7 +71,7 @@ export default function KabarHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="mt-7 max-w-xl font-body font-light text-pg-cream/60 leading-relaxed"
+          className="mt-7 max-w-xl font-body font-light text-pg-ink-mute leading-relaxed"
           style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.05rem)" }}
         >
           Info penting sering tenggelam di obrolan grup WA — ke-scroll, lupa, hilang.

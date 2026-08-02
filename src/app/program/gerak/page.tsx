@@ -6,8 +6,7 @@ import GerakCTA from "./GerakCTA";
 export default function GeRak() {
   return (
     <div
-      className="relative bg-[#0d0118] text-white select-none"
-      style={{ colorScheme: "dark" }}
+      className="relative bg-pg-paper text-pg-ink"
     >
       <PageBg />
       <div className="relative z-10">

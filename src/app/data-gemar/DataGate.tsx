@@ -30,13 +30,13 @@ export default function DataGate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
-      style={{ background: "#0d0118" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 50% 45% at 50% 45%, rgba(59,18,99,0.5) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 45% at 50% 45%, #fbe9f2 0%, transparent 70%)",
         }}
       />
 
@@ -46,18 +46,18 @@ export default function DataGate({ onUnlock }: { onUnlock: () => void }) {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="relative z-10 w-full max-w-sm text-center"
       >
-        <span className="block text-pg-gold text-[11px] font-medium uppercase tracking-[0.3em]">
+        <span className="block text-pg-berry text-[11px] font-medium uppercase tracking-[0.3em]">
           Ruang Internal
         </span>
 
         <h1
-          className="mt-4 font-display font-black leading-none text-pg-cream"
+          className="mt-4 font-display font-black leading-none text-pg-ink"
           style={{ fontSize: "clamp(2rem, 6vw, 2.8rem)", letterSpacing: "-0.03em" }}
         >
           Data GeMar
         </h1>
 
-        <p className="mt-4 font-body font-light text-pg-cream/60 leading-relaxed text-sm">
+        <p className="mt-4 font-body font-light text-pg-ink-mute leading-relaxed text-sm">
           Pencatatan murid &amp; kehadiran. Masukkan passcode untuk membuka.
         </p>
 
@@ -77,7 +77,7 @@ export default function DataGate({ onUnlock }: { onUnlock: () => void }) {
             placeholder="Passcode"
             autoComplete="off"
             aria-label="Passcode"
-            className="w-full bg-transparent border border-pg-cream/15 px-4 py-3 text-sm text-pg-cream placeholder-pg-cream/30 outline-none transition-all duration-200 focus:border-pg-gold"
+            className="w-full bg-transparent border border-pg-paper-3 px-4 py-3 text-sm text-pg-ink placeholder-pg-ink-mute outline-none transition-all duration-200 focus:border-pg-berry"
           />
 
           {error && (
@@ -85,7 +85,7 @@ export default function DataGate({ onUnlock }: { onUnlock: () => void }) {
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="mt-3 text-left text-xs text-pg-gold-light"
+              className="mt-3 text-left text-xs text-pg-berry"
             >
               Passcode salah
             </motion.p>
@@ -93,13 +93,13 @@ export default function DataGate({ onUnlock }: { onUnlock: () => void }) {
 
           <button
             type="submit"
-            className="mt-5 w-full bg-pg-gold hover:bg-pg-gold-light text-pg-darkest font-bold tracking-wider uppercase px-4 py-3 text-sm transition-colors duration-200"
+            className="mt-5 w-full bg-pg-berry hover:bg-pg-berry text-pg-darkest font-bold tracking-wider uppercase px-4 py-3 text-sm transition-colors duration-200"
           >
             Masuk
           </button>
         </motion.form>
 
-        <p className="mt-8 text-[11px] tracking-wide text-pg-cream/35">
+        <p className="mt-8 text-[11px] tracking-wide text-pg-ink-mute">
           Passcode sama dengan Kabar Gendis. Minta ke Marel / Dex.
         </p>
       </motion.div>

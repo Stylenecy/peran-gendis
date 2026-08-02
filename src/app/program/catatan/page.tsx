@@ -5,8 +5,7 @@ import CatatanEditions from "./CatatanEditions";
 export default function CatatanGendis() {
   return (
     <div
-      className="relative bg-[#0d0118] text-white select-none"
-      style={{ colorScheme: "dark" }}
+      className="relative bg-pg-paper text-pg-ink"
     >
       <PageBg />
       <div className="relative z-10">

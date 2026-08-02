@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function TimPage() {
   return (
-    <main className="bg-[#0d0118] min-h-screen selection:bg-pg-gold selection:text-white">
+    <main className="bg-pg-paper min-h-screen selection:bg-pg-berry selection:text-pg-ink">
       <TimTree />
     </main>
   );

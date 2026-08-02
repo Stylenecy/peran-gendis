@@ -90,11 +90,11 @@ export default function MaterialSection({
       <form
         onSubmit={handleSubmit}
         className="p-6 md:p-8 space-y-6"
-        style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
+        style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
       >
         <div>
-          <h2 className="font-display text-xl text-pg-cream">Tambah Materi</h2>
-          <p className="mt-1.5 text-sm text-pg-cream/50 font-body" style={{ fontWeight: 300 }}>
+          <h2 className="font-display text-xl text-pg-ink">Tambah Materi</h2>
+          <p className="mt-1.5 text-sm text-pg-ink-mute font-body" style={{ fontWeight: 300 }}>
             Satu bank materi ajar. Ganti Docs/Canva yang kepecah.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function MaterialSection({
               value={form.subject}
               onChange={(e) => update("subject", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="">— pilih</option>
               {SUBJECTS.map((s) => (
@@ -135,7 +135,7 @@ export default function MaterialSection({
               value={form.level}
               onChange={(e) => update("level", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="">— pilih</option>
               {MATERIAL_LEVELS.map((l) => (
@@ -150,7 +150,7 @@ export default function MaterialSection({
               value={form.kind}
               onChange={(e) => update("kind", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="">— pilih</option>
               {MATERIAL_KINDS.map((k) => (
@@ -197,16 +197,16 @@ export default function MaterialSection({
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
+          <p className="text-sm text-pg-berry-deep">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Materi tersimpan ✓</p>
+          <p className="text-sm text-pg-berry">Materi tersimpan ✓</p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+          className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
           {status === "loading" ? "Menyimpan..." : "Simpan Materi"}
         </button>
@@ -215,10 +215,10 @@ export default function MaterialSection({
       {/* Daftar materi */}
       <div className="mt-12">
         <div className="flex items-baseline justify-between mb-5">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry">
             Bank Materi
           </h3>
-          <span className="text-xs text-pg-cream/40">{materials.length} materi</span>
+          <span className="text-xs text-pg-ink-mute">{materials.length} materi</span>
         </div>
 
         {/* Filter mapel */}
@@ -231,8 +231,8 @@ export default function MaterialSection({
                 onClick={() => setFilter(s)}
                 className={`px-3 py-1.5 text-[11px] uppercase tracking-wider transition-all duration-200 ${
                   active
-                    ? "bg-pg-gold text-pg-darkest"
-                    : "text-pg-cream/50 hover:text-pg-cream border border-pg-cream/15"
+                    ? "bg-pg-berry text-pg-darkest"
+                    : "text-pg-ink-mute hover:text-pg-ink border border-pg-paper-3"
                 }`}
               >
                 {s}
@@ -242,9 +242,9 @@ export default function MaterialSection({
         </div>
 
         {loadingList ? (
-          <p className="text-sm text-pg-cream/40">Memuat...</p>
+          <p className="text-sm text-pg-ink-mute">Memuat...</p>
         ) : filtered.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">
+          <p className="text-sm text-pg-ink-mute">
             {materials.length === 0
               ? "Belum ada materi. Tambah di atas — mulai pindahkan dari Docs/Canva."
               : "Tidak ada materi untuk filter ini."}
@@ -255,25 +255,25 @@ export default function MaterialSection({
               <li
                 key={m.id}
                 className="p-4 md:p-5"
-                style={{ background: "#1a0533", border: "1px solid rgba(245,230,200,0.08)" }}
+                style={{ background: "var(--color-pg-paper-2)", border: "1px solid rgba(245,230,200,0.08)" }}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-pg-cream">{m.title}</p>
-                    <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-pg-cream/45">
-                      {m.subject && <span className="text-pg-gold">{m.subject}</span>}
+                    <p className="text-sm font-semibold text-pg-ink">{m.title}</p>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-pg-ink-mute">
+                      {m.subject && <span className="text-pg-berry">{m.subject}</span>}
                       {m.level && <span>· {m.level}</span>}
                       {m.author && <span>· oleh {m.author}</span>}
                     </div>
                   </div>
                   {m.kind && (
-                    <span className="shrink-0 text-[10px] uppercase tracking-wider text-pg-gold border border-pg-gold/30 px-2 py-1">
+                    <span className="shrink-0 text-[10px] uppercase tracking-wider text-pg-berry border border-pg-berry/25 px-2 py-1">
                       {m.kind}
                     </span>
                   )}
                 </div>
                 {m.body && (
-                  <p className="mt-3 text-sm leading-relaxed text-pg-cream/65 whitespace-pre-line">
+                  <p className="mt-3 text-sm leading-relaxed text-pg-ink-mute whitespace-pre-line">
                     {m.body}
                   </p>
                 )}
@@ -282,7 +282,7 @@ export default function MaterialSection({
                     href={m.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-block text-xs text-pg-gold hover:text-pg-gold-light transition-colors"
+                    className="mt-3 inline-block text-xs text-pg-berry hover:text-pg-berry transition-colors"
                   >
                     Buka materi ↗
                   </a>

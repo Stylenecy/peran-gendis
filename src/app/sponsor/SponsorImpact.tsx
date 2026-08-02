@@ -16,17 +16,17 @@ export default function SponsorImpact() {
     <section
       id="dampak"
       className="py-32 px-4"
-      style={{ background: "#050B14" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <AnimatedSection direction="right" delay={0.1}>
-          <div className="mb-16 pb-8 border-b border-white/10">
-            <span className="text-xs tracking-[0.35em] uppercase text-cyan-400 font-bold border-l-2 border-cyan-400 pl-4 block mb-6">
+          <div className="mb-16 pb-8 border-b border-pg-paper-3">
+            <span className="text-xs tracking-[0.35em] uppercase text-pg-leaf font-bold border-l-2 border-pg-leaf pl-4 block mb-6">
               // Realita Angka
             </span>
             <h2
-              className="font-display italic text-white leading-[0.9]"
+              className="font-display italic text-pg-ink leading-[0.9]"
               style={{ fontSize: "clamp(2.5rem,6vw,5rem)", letterSpacing: "-0.03em" }}
             >
               Angka yang tidak<br />bisa diabaikan.
@@ -39,17 +39,17 @@ export default function SponsorImpact() {
           {stats.map(({ value, suffix, label, source }, i) => (
             <AnimatedSection key={label} direction="up" delay={0.1 + i * 0.08}>
               <motion.div
-                className="relative group grid grid-cols-12 items-baseline gap-4 py-8 border-b border-white/10 cursor-default"
+                className="relative group grid grid-cols-12 items-baseline gap-4 py-8 border-b border-pg-paper-3 cursor-default"
                 whileHover={{ x: 6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {/* Cyan left sweep */}
-                <div className="absolute left-0 top-0 w-0.5 h-0 group-hover:h-full bg-cyan-400 transition-all duration-500" />
+                <div className="absolute left-0 top-0 w-0.5 h-0 group-hover:h-full bg-pg-leaf transition-all duration-500" />
 
                 {/* Number */}
                 <div className="col-span-5 md:col-span-4">
                   <div
-                    className="font-display font-bold text-white flex items-baseline"
+                    className="font-display font-bold text-pg-ink flex items-baseline"
                     style={{ fontSize: "clamp(2.2rem,7vw,5.5rem)", letterSpacing: "-0.03em" }}
                   >
                     <CountUp end={value} duration={3} />
@@ -61,14 +61,14 @@ export default function SponsorImpact() {
 
                 {/* Label */}
                 <div className="col-span-5 md:col-span-6">
-                  <p className="text-white/65 font-light text-base md:text-lg leading-snug">
+                  <p className="text-pg-ink-mute font-light text-base md:text-lg leading-snug">
                     {label}
                   </p>
                 </div>
 
                 {/* Source */}
                 <div className="col-span-2 text-right hidden md:block">
-                  <span className="text-[10px] text-white/25 uppercase tracking-widest">{source}</span>
+                  <span className="text-[10px] text-pg-ink-mute uppercase tracking-widest">{source}</span>
                 </div>
               </motion.div>
             </AnimatedSection>
@@ -76,7 +76,7 @@ export default function SponsorImpact() {
         </div>
 
         <AnimatedSection direction="up" delay={0.5}>
-          <p className="mt-12 text-white/35 text-sm font-light max-w-2xl leading-relaxed">
+          <p className="mt-12 text-pg-ink-mute text-sm font-light max-w-2xl leading-relaxed">
             Dengan mendukung Peran Gendis, kamu berkontribusi langsung pada aksi sosial yang menyentuh kelompok rentan ini. Kami mengubah statistik menjadi langkah konkrit.
           </p>
         </AnimatedSection>

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const EXPO_OUT = [0.22, 1, 0.36, 1] as const;
-const TEAL = "#06b6d4";
-const TEAL_GLOW = "rgba(6,182,212,0.1)";
-const TEAL_DIM = "rgba(6,182,212,0.50)";
-const TEAL_LINE = "rgba(6,182,212,0.2)";
+const TEAL = "var(--color-pg-leaf)";
+const TEAL_GLOW = "var(--color-pg-leaf-soft)";
+const TEAL_DIM = "var(--color-pg-leaf-soft)";
+const TEAL_LINE = "var(--color-pg-leaf-soft)";
 
 export default function KontakHero() {
   return (
@@ -27,15 +27,15 @@ export default function KontakHero() {
           transition={{ duration: 0.8, ease: EXPO_OUT, delay: 0.15 }}
           className="inline-flex items-center gap-3 mb-8"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/90">
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-pg-ink-soft">
+            <span className="w-1.5 h-1.5 rounded-full bg-pg-leaf animate-pulse" />
             Kontak
           </span>
         </motion.div>
 
         {/* Headline */}
         <motion.h1
-          className="font-display font-black text-pg-cream leading-[0.9]"
+          className="font-display font-black text-pg-ink leading-[0.9]"
           style={{
             fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
             letterSpacing: "-0.04em",
@@ -51,7 +51,7 @@ export default function KontakHero() {
 
         {/* Description */}
         <motion.p
-          className="mt-8 text-pg-cream/55 text-base md:text-lg leading-[1.6] max-w-md"
+          className="mt-8 text-pg-ink-mute text-base md:text-lg leading-[1.6] max-w-md"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.4 }}

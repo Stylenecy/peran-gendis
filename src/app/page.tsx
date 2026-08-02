@@ -1,25 +1,36 @@
 import PageBg from "@/components/PageBg";
 import HeroSection from "@/components/HeroSection";
-import HomeProgramBar from "./HomeProgramBar";
-import HomeProgramShowcase from "./HomeProgramShowcase";
-import HomeFeature from "./HomeFeature";
-import HomeCollabs from "./HomeCollabs";
-import HomeTestimonials from "./HomeTestimonials";
+import HomeAjakan from "./HomeAjakan";
+import HomeLapangan from "./HomeLapangan";
+import HomePrograms from "./HomePrograms";
+import HomeIsu from "./HomeIsu";
 import HomeCTA from "./HomeCTA";
 
+/*
+ * Urutan halaman depan mengikuti satu pertanyaan: apa yang paling dibutuhkan
+ * komunitas ini dari seorang pengunjung asing?
+ *
+ * Jawabannya orang — bukan donasi, bukan follower. Karena itu ajakan menjadi
+ * pengajar naik ke posisi kedua, tepat setelah perkenalan, bukan disimpan di
+ * dasar halaman. Bukti (apa itu GeMar, angkanya, programnya) menyusul untuk
+ * meyakinkan yang sudah tertarik.
+ *
+ * Dihapus dari susunan lama:
+ *  · HomeProgramBar     — bilah jam & ticker ala terminal saham; menduplikasi
+ *                         navigasi dan tidak berbunyi seperti komunitas warga.
+ *  · HomeTestimonials   — tiga testimoni karangan tanpa penutur nyata.
+ *  · HomeCollabs        — daftar slogan tanpa tautan atau isi.
+ *  · HomeFeature        — diganti HomeIsu, tanpa gaya widget dasbor.
+ */
 export default function Home() {
   return (
-    <div
-      className="relative bg-[#0d0118] text-white select-none"
-      style={{ colorScheme: "dark" }}
-    >
+    <div className="relative">
       <PageBg />
       <HeroSection />
-      <HomeProgramBar />
-      <HomeProgramShowcase />
-      <HomeFeature />
-      <HomeCollabs />
-      <HomeTestimonials />
+      <HomeAjakan />
+      <HomeLapangan />
+      <HomePrograms />
+      <HomeIsu />
       <HomeCTA />
     </div>
   );

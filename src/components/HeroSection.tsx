@@ -2,114 +2,91 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Lonceng } from "@/components/Lonceng";
 
-const EXPO_OUT = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: EASE, delay },
+});
 
 export default function HeroSection() {
   return (
-    <section className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 max-w-6xl mx-auto">
-      <style>{`
-        @keyframes shiny-amber {
-          0%   { background-position: -200% center; }
-          100% { background-position:  200% center; }
-        }
-        .shiny-amber {
-          background: linear-gradient(
-            to right,
-            #0d0118 0%,
-            #b45309 15%,
-            #d97706 35%,
-            #fef3c7 50%,
-            #d97706 65%,
-            #b45309 85%,
-            #0d0118 100%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          -webkit-text-fill-color: transparent;
-          animation: shiny-amber 6s linear infinite;
-        }
-      `}</style>
-
+    <section className="relative z-10 mx-auto max-w-5xl px-6 pt-32 pb-20 md:pt-40 md:pb-28">
       {/* Eyebrow */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: EXPO_OUT, delay: 0.2 }}
-        className="inline-flex items-center gap-3 mb-6"
-      >
-        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/90">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-          Komunitas Advokasi Gender · Anak · Disabilitas
-        </span>
-        <span className="px-2.5 py-0.5 rounded-full border border-white/10 text-[10px] font-medium tracking-wide text-white/50 uppercase bg-white/5">
-          Aktif 2026
-        </span>
-      </motion.div>
-
-      {/* Headline */}
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: EXPO_OUT, delay: 0.3 }}
-        className="font-display font-black text-pg-cream leading-[1.05]"
-        style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.04em" }}
-      >
-        Untuk perempuan.
-        <br />
-        Untuk anak.
-        <br />
-        <span className="shiny-amber select-none inline-block pb-2">
-          Untuk kesetaraan.
-        </span>
-      </motion.h1>
-
-      {/* Description */}
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="mt-8 text-pg-cream/65 max-w-lg text-base md:text-lg leading-[1.6]"
+        {...rise(0.05)}
+        className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-pg-ink-mute"
       >
-        Perempuan, Anak, Gender, dan Disabilitas — empat isu yang kami jadikan
-        alasan untuk bergerak bersama.
+        <Lonceng className="h-4 w-4 text-pg-berry" />
+        <span>Perempuan · Anak · Gender · Disabilitas</span>
+        <span
+          aria-hidden="true"
+          className="h-3 w-px bg-pg-ink-mute/40"
+        />
+        <span>Yogyakarta</span>
       </motion.p>
 
-      {/* Buttons */}
+      {/* Tagline resmi komunitas, akhirnya dipakai sebagai judul utama —
+          sebelumnya cuma terselip di footer & metadata. */}
+      <motion.h1
+        {...rise(0.12)}
+        className="mt-7 font-display font-semibold leading-[0.98] text-pg-ink"
+        style={{ fontSize: "clamp(2.75rem, 8vw, 6rem)" }}
+      >
+        Manisnya kebersamaan
+        <br />
+        dalam{" "}
+        <span className="pg-underline text-pg-berry">kesetaraan</span>.
+      </motion.h1>
+
+      <motion.p
+        {...rise(0.2)}
+        className="mt-8 max-w-xl text-lg leading-relaxed text-pg-ink-soft"
+      >
+        Kami komunitas akar rumput di Yogyakarta. Tiap minggu kami membuka kelas
+        belajar <strong className="font-semibold text-pg-ink">gratis</strong>{" "}
+        untuk anak-anak TK–SD — dan kami bersuara untuk isu yang sering
+        didiamkan.
+      </motion.p>
+
+      {/* Aksi utama diarahkan ke perekrutan pengajar, bukan ke "kenali kami".
+          Kebutuhan paling mendesak komunitas saat ini adalah orang. */}
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        {...rise(0.28)}
+        className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
       >
         <Link
-          href="/tentang"
-          className="px-7 py-3.5 rounded-full bg-pg-cream text-pg-dark font-semibold text-sm hover:bg-pg-gold-light transition-colors"
+          href="/program/gemar#relawan"
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-pg-berry px-7 text-[15px] font-semibold text-white transition-colors hover:bg-pg-berry-deep"
         >
-          Kenali Kami
+          Ikut jadi pengajar
         </Link>
         <Link
-          href="/sponsor"
-          className="px-7 py-3.5 rounded-full border border-pg-cream/20 text-pg-cream/80 text-sm hover:bg-white/5 hover:text-pg-cream transition-colors"
+          href="/tentang"
+          className="inline-flex min-h-12 items-center justify-center rounded-full border border-pg-paper-3 px-7 text-[15px] font-semibold text-pg-ink transition-colors hover:bg-pg-paper-2"
         >
-          Dukung Gerakan →
+          Kenali kami
         </Link>
       </motion.div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      {/* Filosofi logo dinaikkan ke permukaan — ini yang membedakan
+          komunitas ini dari komunitas sosial mana pun, dan selama ini
+          hanya hidup di dokumen internal. */}
+      <motion.figure
+        {...rise(0.4)}
+        className="mt-16 max-w-md border-l-2 border-pg-berry/30 pl-5"
       >
-        <span className="text-[10px] tracking-widest uppercase text-white/25">
-          scroll
-        </span>
-        <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent" />
-      </motion.div>
+        <blockquote className="font-display text-lg italic leading-snug text-pg-ink">
+          &ldquo;Cantik, tetapi beracun. Terkesan manis, tetapi berani bersifat
+          kritis.&rdquo;
+        </blockquote>
+        <figcaption className="mt-2 text-[13px] text-pg-ink-mute">
+          Makna bunga bakung lembah pada logo kami
+        </figcaption>
+      </motion.figure>
     </section>
   );
 }

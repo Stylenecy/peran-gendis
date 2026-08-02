@@ -21,7 +21,7 @@ export default function KabarRoom() {
   }, []);
 
   if (!ready) {
-    return <div style={{ minHeight: "100vh", background: "#0d0118" }} />;
+    return <div style={{ minHeight: "100vh", background: "var(--color-pg-paper)" }} />;
   }
 
   if (!unlocked) {
@@ -29,7 +29,7 @@ export default function KabarRoom() {
   }
 
   return (
-    <main style={{ background: "#0d0118" }}>
+    <main style={{ background: "var(--color-pg-paper)" }}>
       <KabarHero />
       <KabarComposer onPosted={() => setRefreshToken((t) => t + 1)} />
       <KabarFeed refreshToken={refreshToken} />

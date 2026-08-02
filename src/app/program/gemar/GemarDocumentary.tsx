@@ -5,7 +5,7 @@ import Image from "next/image";
 const photos = [
   {
     src: "/photos/gemar-group.webp",
-    caption: "Sesi perdana, 17 Mei 2026 â€” Kampoeng Mataram, Bantul",
+    caption: "Sesi perdana, 17 Mei 2026 — Kampoeng Mataram, Bantul",
     alt: "Relawan dan anak-anak di sesi perdana GeMar",
     size: "tall",
   },
@@ -17,7 +17,7 @@ const photos = [
   },
   {
     src: "/photos/gemar-kids-art.webp",
-    caption: "Hasil karya anak-anak â€” kreativitas tanpa batas",
+    caption: "Hasil karya anak-anak — kreativitas tanpa batas",
     alt: "Anak-anak menunjukkan hasil karya mereka",
     size: "square",
   },
@@ -31,8 +31,8 @@ const photos = [
 
 export default function GemarDocumentary() {
   return (
-    <section className="relative" style={{ background: "#1a0533" }}>
-      <div className="w-full h-px bg-pg-gold/20" />
+    <section className="relative" style={{ background: "var(--color-pg-paper-2)" }}>
+      <div className="w-full h-px bg-pg-berry-soft" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-32">
         {/* Header */}
@@ -43,16 +43,16 @@ export default function GemarDocumentary() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="block text-pg-gold text-xs tracking-[0.3em] uppercase mb-4">
+            <span className="block text-pg-berry text-xs tracking-[0.3em] uppercase mb-4">
               Dokumentasi
             </span>
             <h2
-              className="font-display font-bold text-pg-cream leading-[1.15]"
+              className="font-display font-bold text-pg-ink leading-[1.15]"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}
             >
               Dari lapangan,
               <br />
-              <em className="text-pg-cream-warm/55">bukan dari presentasi.</em>
+              <em className="text-pg-ink-mute">bukan dari presentasi.</em>
             </h2>
           </motion.div>
           <motion.p
@@ -60,17 +60,17 @@ export default function GemarDocumentary() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-sm max-w-xs md:text-right leading-relaxed text-pg-cream-warm/50"
+            className="text-sm max-w-xs md:text-right leading-relaxed text-pg-ink-mute"
             style={{ fontWeight: 300 }}
           >
             Foto-foto ini diambil saat sesi pertama GeMar, 17 Mei 2026.
-            Ini bukan photoshoot â€” ini dokumentasi hari pertama kerja nyata kami.
+            Ini bukan photoshoot — ini dokumentasi hari pertama kerja nyata kami.
           </motion.p>
         </div>
 
         {/* Masonry grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
-          {/* Photo 1 â€” 5 col tall */}
+          {/* Photo 1 — 5 col tall */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,15 +87,15 @@ export default function GemarDocumentary() {
               style={{ filter: "brightness(0.88) saturate(0.9)" }}
               sizes="(max-width: 768px) 100vw, 42vw"
             />
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-darkest/40" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-deep/40" />
             <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-              <p className="font-display italic text-xs text-pg-cream/85">{photos[0].caption}</p>
+              <p className="font-display italic text-xs text-pg-ink-soft">{photos[0].caption}</p>
             </div>
             {/* Amber corner mark */}
-            <div className="absolute top-0 left-0 w-6 h-6 bg-pg-gold" />
+            <div className="absolute top-0 left-0 w-6 h-6 bg-pg-berry" />
           </motion.div>
 
-          {/* Photo 2 â€” 7 col wide */}
+          {/* Photo 2 — 7 col wide */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -112,13 +112,13 @@ export default function GemarDocumentary() {
               style={{ filter: "brightness(0.85) saturate(0.85)" }}
               sizes="(max-width: 768px) 100vw, 58vw"
             />
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-darkest/40" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-deep/40" />
             <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-              <p className="font-display italic text-xs text-pg-cream/85">{photos[1].caption}</p>
+              <p className="font-display italic text-xs text-pg-ink-soft">{photos[1].caption}</p>
             </div>
           </motion.div>
 
-          {/* Photos 3 & 4 â€” 3 col each (offset under photo 2) */}
+          {/* Photos 3 & 4 — 3 col each (offset under photo 2) */}
           {[photos[2], photos[3]].map((photo, i) => (
             <motion.div
               key={photo.src}
@@ -137,9 +137,9 @@ export default function GemarDocumentary() {
                 style={{ filter: "brightness(0.85) saturate(0.85)" }}
                 sizes="(max-width: 768px) 100vw, 25vw"
               />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-darkest/40" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-pg-deep/40" />
               <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <p className="font-display italic text-xs text-pg-cream/85">{photo.caption}</p>
+                <p className="font-display italic text-xs text-pg-ink-soft">{photo.caption}</p>
               </div>
             </motion.div>
           ))}
@@ -156,16 +156,16 @@ export default function GemarDocumentary() {
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           className="mt-12 flex items-center justify-between flex-wrap gap-4"
         >
-          <p className="text-sm text-pg-cream-warm/45" style={{ fontWeight: 300 }}>
+          <p className="text-sm text-pg-ink-mute" style={{ fontWeight: 300 }}>
             Foto lebih banyak di dokumentasi lapangan kami
           </p>
           <a
             href="https://www.instagram.com/peran.gendis"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium tracking-wider text-pg-gold hover:text-pg-gold-light transition-colors duration-300"
+            className="inline-flex min-h-11 items-center rounded-full text-sm font-semibold tracking-wider text-pg-berry transition-colors hover:text-pg-berry-deep"
           >
-            @peran.gendis â†’
+            @peran.gendis →<span className="sr-only"> (buka Instagram di tab baru)</span>
           </a>
         </motion.div>
       </div>

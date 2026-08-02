@@ -11,10 +11,10 @@ export default function GemarWhy() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "#1a0533" }}
+      style={{ background: "var(--color-pg-paper-2)" }}
     >
       {/* Top amber edge */}
-      <div className="w-full h-px bg-pg-gold/25" />
+      <div className="w-full h-px bg-pg-berry-soft" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-36">
         {/* Section label */}
@@ -25,7 +25,7 @@ export default function GemarWhy() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16 md:mb-24"
         >
-          <span className="text-pg-gold text-xs tracking-[0.3em] uppercase">
+          <span className="text-pg-berry text-xs tracking-[0.3em] uppercase">
             Mengapa GeMar Ada
           </span>
         </motion.div>
@@ -41,12 +41,12 @@ export default function GemarWhy() {
             className="md:col-span-7 md:pr-12"
           >
             <h2
-              className="font-display font-bold text-pg-cream leading-[1.15]"
+              className="font-display font-bold text-pg-ink leading-[1.15]"
               style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", letterSpacing: "-0.02em" }}
             >
               Pendidikan bukan hak istimewa.
               <br />
-              <em className="text-pg-gold">Itu hak dasar.</em>
+              <em className="text-pg-berry">Itu hak dasar.</em>
             </h2>
           </motion.div>
 
@@ -59,7 +59,7 @@ export default function GemarWhy() {
             className="md:col-span-5 md:pt-3"
           >
             <p
-              className="text-base md:text-lg leading-relaxed text-pg-cream-warm/80"
+              className="text-base md:text-lg leading-relaxed text-pg-ink"
               style={{ fontWeight: 300 }}
             >
               Di Daerah Istimewa Yogyakarta, ribuan anak usia sekolah tidak
@@ -67,11 +67,11 @@ export default function GemarWhy() {
               belajar, tapi karena sistemnya belum menjangkau mereka.
             </p>
             <p
-              className="mt-5 text-base md:text-lg leading-relaxed text-pg-cream-warm/80"
+              className="mt-5 text-base md:text-lg leading-relaxed text-pg-ink"
               style={{ fontWeight: 300 }}
             >
               GeMar hadir bukan sebagai solusi sementara, tapi sebagai pernyataan:{" "}
-              <strong className="text-pg-cream font-semibold">
+              <strong className="text-pg-ink font-semibold">
                 setiap anak berhak ditemani dalam belajar.
               </strong>
             </p>
@@ -84,18 +84,18 @@ export default function GemarWhy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-pg-gold/30"
+          className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-pg-berry/25"
         >
           {stats.map((stat, i) => (
             <div
               key={i}
               className="pt-10 pb-8 md:pr-8"
               style={{
-                borderRight: i < 2 ? "1px solid rgba(217,119,6,0.15)" : "none",
+                borderRight: i < 2 ? "1px solid var(--color-pg-paper-3)" : "none",
               }}
             >
               <div
-                className="font-display font-black text-pg-cream leading-none"
+                className="font-display font-black text-pg-ink leading-none"
                 style={{
                   fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
                   letterSpacing: "-0.03em",
@@ -103,10 +103,10 @@ export default function GemarWhy() {
               >
                 {stat.number}
               </div>
-              <p className="mt-3 text-sm md:text-base text-pg-cream-warm">
+              <p className="mt-3 text-sm md:text-base text-pg-ink">
                 {stat.label}
               </p>
-              <p className="mt-1 text-xs tracking-wide text-pg-cream/35">
+              <p className="mt-1 text-xs tracking-wide text-pg-ink-mute">
                 {stat.sub}
               </p>
             </div>
@@ -116,10 +116,13 @@ export default function GemarWhy() {
 
       {/* Watermark */}
       <div
-        className="absolute bottom-0 right-0 pointer-events-none select-none font-display font-black leading-none"
+        className="absolute bottom-0 right-0 pointer-events-none font-display font-black leading-none"
         style={{
           fontSize: "clamp(6rem, 18vw, 16rem)",
-          color: "rgba(59,18,99,0.25)",
+          // Murni tekstur latar (aria-hidden). Dibuat setipis warna kertas
+          // supaya jelas terbaca sebagai hiasan, bukan teks yang gagal kontras.
+          color: "var(--color-pg-paper-3)",
+          opacity: 0.5,
           letterSpacing: "-0.05em",
           transform: "translateX(8%) translateY(15%)",
           userSelect: "none",

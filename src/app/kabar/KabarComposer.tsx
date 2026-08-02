@@ -17,9 +17,9 @@ const CATEGORIES = [
 ] as const;
 
 const inputCls =
-  "w-full bg-transparent border border-pg-cream/15 px-4 py-3 text-sm text-pg-cream placeholder-pg-cream/30 outline-none transition-all duration-200 focus:border-pg-gold";
+  "w-full bg-transparent border border-pg-paper-3 px-4 py-3 text-sm text-pg-ink placeholder-pg-ink-mute outline-none transition-all duration-200 focus:border-pg-berry";
 
-const labelCls = "block text-xs tracking-[0.3em] uppercase text-pg-gold mb-2.5";
+const labelCls = "block text-xs tracking-[0.3em] uppercase text-pg-berry mb-2.5";
 
 const emptyForm = {
   author: "",
@@ -69,7 +69,7 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "#0d0118" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       {/* Ambient amber glow */}
       <div
@@ -88,11 +88,11 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-pg-gold mb-5">
+          <p className="text-xs tracking-[0.3em] uppercase text-pg-berry mb-5">
             Kabar Internal
           </p>
           <h2
-            className="font-display text-pg-cream leading-[1.05]"
+            className="font-display text-pg-ink leading-[1.05]"
             style={{
               fontSize: "clamp(2rem, 5vw, 3.2rem)",
               letterSpacing: "-0.02em",
@@ -101,7 +101,7 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
             Tulis Kabar
           </h2>
           <p
-            className="mt-4 text-base md:text-lg leading-relaxed text-pg-cream-warm/70 font-body"
+            className="mt-4 text-base md:text-lg leading-relaxed text-pg-ink-soft font-body"
             style={{ fontWeight: 300 }}
           >
             Satu menit. Biar nggak hilang di chat.
@@ -116,8 +116,8 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
           transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
           className="mt-12 p-6 md:p-9"
           style={{
-            background: "#1a0533",
-            border: "1px solid rgba(217,119,6,0.22)",
+            background: "var(--color-pg-paper-2)",
+            border: "1px solid var(--color-pg-paper-3)",
           }}
         >
           {status === "success" ? (
@@ -130,30 +130,30 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
               <div
                 className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full"
                 style={{
-                  background: "rgba(217,119,6,0.15)",
-                  border: "1px solid rgba(217,119,6,0.45)",
+                  background: "var(--color-pg-berry-soft)",
+                  border: "1px solid var(--color-pg-paper-3)",
                 }}
               >
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                   <path
                     d="M3.5 9.5L7 13L14.5 5"
-                    stroke="#fbbf24"
+                    stroke="var(--color-pg-gula)"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>
               </div>
-              <p className="font-display text-xl text-pg-gold-light mb-2">
+              <p className="font-display text-xl text-pg-berry mb-2">
                 Kabar terkirim.
               </p>
-              <p className="text-sm text-pg-cream/60 font-body" style={{ fontWeight: 300 }}>
+              <p className="text-sm text-pg-ink-mute font-body" style={{ fontWeight: 300 }}>
                 Sudah masuk ke feed tim. Terima kasih sudah nyatet.
               </p>
               <button
                 type="button"
                 onClick={resetComposer}
-                className="mt-8 px-6 py-3 border border-pg-gold/40 text-pg-gold text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:border-pg-gold hover:bg-pg-gold/10"
+                className="mt-8 px-6 py-3 border border-pg-berry/25 text-pg-berry text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:border-pg-berry hover:bg-pg-berry-soft"
               >
                 Tulis kabar lain
               </button>
@@ -187,7 +187,7 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
                   value={form.category}
                   onChange={(e) => update("category", e.target.value)}
                   className={inputCls}
-                  style={{ background: "#0d0118" }}
+                  style={{ background: "var(--color-pg-paper)" }}
                 >
                   <option value="" disabled>
                     Pilih kategori
@@ -229,7 +229,6 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
                     value={form.event_date}
                     onChange={(e) => update("event_date", e.target.value)}
                     className={inputCls}
-                    style={{ colorScheme: "dark" }}
                   />
                 </div>
                 <div>
@@ -267,7 +266,7 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="text-sm text-red-400 font-body"
+                  className="text-sm text-pg-berry-deep font-body"
                   style={{ fontWeight: 300 }}
                 >
                   Gagal mengirim. Cek koneksi lalu coba lagi — tulisanmu masih aman.
@@ -277,7 +276,7 @@ export default function KabarComposer({ onPosted }: { onPosted: () => void }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+                className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
               >
                 {loading ? "Mengirim..." : "Kirim Kabar"}
               </button>

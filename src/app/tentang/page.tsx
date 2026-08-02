@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Tentang() {
   return (
-    <div className="bg-[#1a0533]">
+    <div className="bg-pg-paper-2">
       <TentangHero />
       <TentangLatarBelakang />
       <TentangFilosofi />

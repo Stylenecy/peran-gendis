@@ -162,9 +162,9 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
       <form
         onSubmit={handleSave}
         className="p-6 md:p-8 space-y-6"
-        style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
+        style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
       >
-        <h2 className="font-display text-xl text-pg-cream">Catat Sesi</h2>
+        <h2 className="font-display text-xl text-pg-ink">Catat Sesi</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
@@ -176,7 +176,6 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
               value={sessionDate}
               onChange={(e) => setSessionDate(e.target.value)}
               className={inputCls}
-              style={{ colorScheme: "dark" }}
             />
           </div>
           <div>
@@ -187,7 +186,7 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="" disabled>Pilih lokasi</option>
               {LOCATIONS.map((l) => (
@@ -200,14 +199,14 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
         {/* Checklist murid */}
         {location && (
           roster.length === 0 ? (
-            <p className="text-sm text-pg-cream/40">
+            <p className="text-sm text-pg-ink-mute">
               Belum ada murid terdaftar di lokasi ini. Tambah dulu di tab Murid.
             </p>
           ) : (
             <div>
               <div className="flex items-baseline justify-between mb-3">
                 <span className={labelCls}>Murid hadir</span>
-                <span className="text-xs text-pg-gold">{presentCount}/{roster.length} hadir</span>
+                <span className="text-xs text-pg-berry">{presentCount}/{roster.length} hadir</span>
               </div>
               <ul className="space-y-2">
                 {roster.map((s) => {
@@ -219,28 +218,28 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
                         onClick={() => toggle(s.id)}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left transition-colors"
                         style={{
-                          background: on ? "rgba(217,119,6,0.12)" : "#0d0118",
+                          background: on ? "var(--color-pg-berry-soft)" : "var(--color-pg-paper)",
                           border: on
-                            ? "1px solid rgba(217,119,6,0.45)"
+                            ? "1px solid var(--color-pg-paper-3)"
                             : "1px solid rgba(245,230,200,0.1)",
                         }}
                       >
                         <span
                           className="flex h-5 w-5 shrink-0 items-center justify-center"
                           style={{
-                            background: on ? "#d97706" : "transparent",
+                            background: on ? "var(--color-pg-berry)" : "transparent",
                             border: on ? "none" : "1px solid rgba(245,230,200,0.3)",
                           }}
                         >
                           {on && (
                             <svg width="12" height="12" viewBox="0 0 18 18" fill="none">
-                              <path d="M3.5 9.5L7 13L14.5 5" stroke="#0d0118" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d="M3.5 9.5L7 13L14.5 5" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           )}
                         </span>
-                        <span className={on ? "text-pg-cream" : "text-pg-cream/50"}>{s.name}</span>
+                        <span className={on ? "text-pg-ink" : "text-pg-ink-mute"}>{s.name}</span>
                         {s.level && (
-                          <span className="ml-auto text-[10px] uppercase tracking-wider text-pg-cream/40">
+                          <span className="ml-auto text-[10px] uppercase tracking-wider text-pg-ink-mute">
                             {s.level}
                           </span>
                         )}
@@ -258,10 +257,10 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
           <div>
             <div className="flex items-baseline justify-between mb-3">
               <span className={labelCls}>Tentor yang ngajar</span>
-              <span className="text-xs text-pg-gold">{tentorPresentCount} tentor</span>
+              <span className="text-xs text-pg-berry">{tentorPresentCount} tentor</span>
             </div>
             {tentors.length === 0 ? (
-              <p className="text-sm text-pg-cream/40">
+              <p className="text-sm text-pg-ink-mute">
                 Belum ada tentor. Tambah dulu di tab Tentor.
               </p>
             ) : (
@@ -275,26 +274,26 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
                         onClick={() => toggleTentor(t.id)}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left transition-colors"
                         style={{
-                          background: on ? "rgba(217,119,6,0.12)" : "#0d0118",
+                          background: on ? "var(--color-pg-berry-soft)" : "var(--color-pg-paper)",
                           border: on
-                            ? "1px solid rgba(217,119,6,0.45)"
+                            ? "1px solid var(--color-pg-paper-3)"
                             : "1px solid rgba(245,230,200,0.1)",
                         }}
                       >
                         <span
                           className="flex h-5 w-5 shrink-0 items-center justify-center"
                           style={{
-                            background: on ? "#d97706" : "transparent",
+                            background: on ? "var(--color-pg-berry)" : "transparent",
                             border: on ? "none" : "1px solid rgba(245,230,200,0.3)",
                           }}
                         >
                           {on && (
                             <svg width="12" height="12" viewBox="0 0 18 18" fill="none">
-                              <path d="M3.5 9.5L7 13L14.5 5" stroke="#0d0118" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d="M3.5 9.5L7 13L14.5 5" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           )}
                         </span>
-                        <span className={on ? "text-pg-cream" : "text-pg-cream/50"}>{t.name}</span>
+                        <span className={on ? "text-pg-ink" : "text-pg-ink-mute"}>{t.name}</span>
                       </button>
                     </li>
                   );
@@ -322,23 +321,23 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
               }}
               className={inputCls}
             />
-            <p className="mt-2 text-[11px] text-pg-cream/40">
+            <p className="mt-2 text-[11px] text-pg-ink-mute">
               Tersaran {rupiah(suggestedIuran)} ({tentorPresentCount} tentor × {rupiah(IURAN_DEFAULT)}). Boleh diubah.
             </p>
           </div>
         )}
 
         {status === "error" && (
-          <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
+          <p className="text-sm text-pg-berry-deep">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Sesi tersimpan ✓</p>
+          <p className="text-sm text-pg-berry">Sesi tersimpan ✓</p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading" || !location || roster.length === 0}
-          className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-50 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+          className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-50 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
           {status === "loading" ? "Menyimpan..." : "Simpan Sesi"}
         </button>
@@ -346,24 +345,24 @@ export default function AttendanceSection({ refreshToken }: { refreshToken: numb
 
       {/* Ringkasan kehadiran terakhir */}
       <div className="mt-12">
-        <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-6">
+        <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-6">
           Kehadiran Terakhir
         </h3>
         {grouped.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">Belum ada catatan kehadiran.</p>
+          <p className="text-sm text-pg-ink-mute">Belum ada catatan kehadiran.</p>
         ) : (
           <ul className="space-y-2">
             {grouped.map((g) => (
               <li
                 key={`${g.date}|${g.location}`}
                 className="flex items-center justify-between px-4 py-3 text-sm"
-                style={{ background: "#1a0533" }}
+                style={{ background: "var(--color-pg-paper-2)" }}
               >
                 <div>
-                  <span className="text-pg-cream">{g.date}</span>
-                  <span className="text-pg-cream/40"> · {g.location}</span>
+                  <span className="text-pg-ink">{g.date}</span>
+                  <span className="text-pg-ink-mute"> · {g.location}</span>
                 </div>
-                <span className="shrink-0 ml-3 text-pg-gold">{g.hadir}/{g.total} hadir</span>
+                <span className="shrink-0 ml-3 text-pg-berry">{g.hadir}/{g.total} hadir</span>
               </li>
             ))}
           </ul>

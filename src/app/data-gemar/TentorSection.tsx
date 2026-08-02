@@ -65,11 +65,11 @@ export default function TentorSection({
       <form
         onSubmit={handleSubmit}
         className="p-6 md:p-8 space-y-6"
-        style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
+        style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
       >
         <div>
-          <h2 className="font-display text-xl text-pg-cream">Tambah Tentor</h2>
-          <p className="mt-1.5 text-sm text-pg-cream/50 font-body" style={{ fontWeight: 300 }}>
+          <h2 className="font-display text-xl text-pg-ink">Tambah Tentor</h2>
+          <p className="mt-1.5 text-sm text-pg-ink-mute font-body" style={{ fontWeight: 300 }}>
             Roster relawan pengajar. Dipakai buat presensi di tab Kehadiran.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function TentorSection({
               value={form.location}
               onChange={(e) => update("location", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="">— (opsional)</option>
               {LOCATIONS.map((l) => (
@@ -117,16 +117,16 @@ export default function TentorSection({
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
+          <p className="text-sm text-pg-berry-deep">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Tentor tersimpan ✓</p>
+          <p className="text-sm text-pg-berry">Tentor tersimpan ✓</p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+          className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
           {status === "loading" ? "Menyimpan..." : "Simpan Tentor"}
         </button>
@@ -135,30 +135,30 @@ export default function TentorSection({
       {/* Daftar tentor */}
       <div className="mt-12">
         <div className="flex items-baseline justify-between mb-6">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry">
             Daftar Tentor
           </h3>
-          <span className="text-xs text-pg-cream/40">{tentors.length} tentor</span>
+          <span className="text-xs text-pg-ink-mute">{tentors.length} tentor</span>
         </div>
 
         {loadingList ? (
-          <p className="text-sm text-pg-cream/40">Memuat...</p>
+          <p className="text-sm text-pg-ink-mute">Memuat...</p>
         ) : tentors.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">Belum ada tentor. Tambah di atas.</p>
+          <p className="text-sm text-pg-ink-mute">Belum ada tentor. Tambah di atas.</p>
         ) : (
           <ul className="space-y-2">
             {tentors.map((t) => (
               <li
                 key={t.id}
                 className="flex items-center justify-between px-4 py-3 text-sm"
-                style={{ background: "#1a0533" }}
+                style={{ background: "var(--color-pg-paper-2)" }}
               >
                 <div>
-                  <span className="text-pg-cream">{t.name}</span>
-                  {t.contact && <span className="text-pg-cream/40"> · {t.contact}</span>}
+                  <span className="text-pg-ink">{t.name}</span>
+                  {t.contact && <span className="text-pg-ink-mute"> · {t.contact}</span>}
                 </div>
                 {t.location && (
-                  <span className="shrink-0 ml-3 text-[10px] uppercase tracking-wider text-pg-gold border border-pg-gold/30 px-2 py-1">
+                  <span className="shrink-0 ml-3 text-[10px] uppercase tracking-wider text-pg-berry border border-pg-berry/25 px-2 py-1">
                     {t.location}
                   </span>
                 )}

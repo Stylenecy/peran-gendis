@@ -20,7 +20,7 @@ export default function LaporanRoom() {
   }, []);
 
   if (!ready) {
-    return <div style={{ minHeight: "100vh", background: "#0d0118" }} />;
+    return <div style={{ minHeight: "100vh", background: "var(--color-pg-paper)" }} />;
   }
 
   if (!unlocked) {
@@ -34,28 +34,28 @@ export default function LaporanRoom() {
   }
 
   return (
-    <main className="min-h-screen" style={{ background: "#0d0118" }}>
+    <main className="min-h-screen" style={{ background: "var(--color-pg-paper)" }}>
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,18,99,0.5) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 0%, #fbe9f2 0%, transparent 70%)",
           }}
         />
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 pt-28 md:pt-32 pb-4 text-center">
           <RoomNav />
-          <span className="block text-pg-gold text-[11px] font-medium uppercase tracking-[0.3em]">
+          <span className="block text-pg-berry text-[11px] font-medium uppercase tracking-[0.3em]">
             Ruang Internal
           </span>
           <h1
-            className="mt-4 font-display font-black leading-none text-pg-cream"
+            className="mt-4 font-display font-black leading-none text-pg-ink"
             style={{ fontSize: "clamp(2.2rem, 6vw, 3.4rem)", letterSpacing: "-0.03em" }}
           >
             Laporan
           </h1>
-          <p className="mt-4 font-body font-light text-pg-cream/60 text-sm md:text-base">
+          <p className="mt-4 font-body font-light text-pg-ink-mute text-sm md:text-base">
             Seberapa membanggakan Peran Gendis — dalam angka, hidup &amp; real.
           </p>
         </div>

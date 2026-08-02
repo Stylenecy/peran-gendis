@@ -72,9 +72,9 @@ export default function StudentSection({
       <form
         onSubmit={handleSubmit}
         className="p-6 md:p-8 space-y-6"
-        style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.22)" }}
+        style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
       >
-        <h2 className="font-display text-xl text-pg-cream">Tambah Murid</h2>
+        <h2 className="font-display text-xl text-pg-ink">Tambah Murid</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
@@ -97,7 +97,7 @@ export default function StudentSection({
               value={form.location}
               onChange={(e) => update("location", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="" disabled>Pilih lokasi</option>
               {LOCATIONS.map((l) => (
@@ -112,7 +112,7 @@ export default function StudentSection({
               value={form.level}
               onChange={(e) => update("level", e.target.value)}
               className={inputCls}
-              style={{ background: "#0d0118" }}
+              style={{ background: "var(--color-pg-paper)" }}
             >
               <option value="">— (opsional)</option>
               {LEVELS.map((l) => (
@@ -146,16 +146,16 @@ export default function StudentSection({
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-400">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
+          <p className="text-sm text-pg-berry-deep">Gagal menyimpan. Cek koneksi lalu coba lagi.</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-pg-gold-light">Murid tersimpan ✓</p>
+          <p className="text-sm text-pg-berry">Murid tersimpan ✓</p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-4 bg-pg-gold hover:bg-pg-gold-light disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
+          className="w-full py-4 bg-pg-berry hover:bg-pg-berry disabled:opacity-60 transition-all duration-300 text-pg-darkest text-sm font-bold tracking-wider uppercase"
         >
           {status === "loading" ? "Menyimpan..." : "Simpan Murid"}
         </button>
@@ -164,44 +164,44 @@ export default function StudentSection({
       {/* Daftar murid per lokasi */}
       <div className="mt-12">
         <div className="flex items-baseline justify-between mb-6">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry">
             Daftar Murid
           </h3>
-          <span className="text-xs text-pg-cream/40">{students.length} murid</span>
+          <span className="text-xs text-pg-ink-mute">{students.length} murid</span>
         </div>
 
         {loadingList ? (
-          <p className="text-sm text-pg-cream/40">Memuat...</p>
+          <p className="text-sm text-pg-ink-mute">Memuat...</p>
         ) : students.length === 0 ? (
-          <p className="text-sm text-pg-cream/40">Belum ada murid. Tambah di atas.</p>
+          <p className="text-sm text-pg-ink-mute">Belum ada murid. Tambah di atas.</p>
         ) : (
           <div className="space-y-8">
             {byLocation
               .filter((g) => g.items.length > 0)
               .map((g) => (
                 <div key={g.loc}>
-                  <div className="flex items-baseline gap-3 mb-3 border-l-2 border-pg-gold pl-3">
-                    <span className="text-sm font-semibold text-pg-cream">{g.loc}</span>
-                    <span className="text-xs text-pg-cream/40">{g.items.length}</span>
+                  <div className="flex items-baseline gap-3 mb-3 border-l-2 border-pg-berry pl-3">
+                    <span className="text-sm font-semibold text-pg-ink">{g.loc}</span>
+                    <span className="text-xs text-pg-ink-mute">{g.items.length}</span>
                   </div>
                   <ul className="space-y-2">
                     {g.items.map((s) => (
                       <li
                         key={s.id}
                         className="flex items-center justify-between px-4 py-3 text-sm"
-                        style={{ background: "#1a0533" }}
+                        style={{ background: "var(--color-pg-paper-2)" }}
                       >
                         <div>
-                          <span className="text-pg-cream">{s.name}</span>
+                          <span className="text-pg-ink">{s.name}</span>
                           {s.guardian && (
-                            <span className="text-pg-cream/40"> · wali: {s.guardian}</span>
+                            <span className="text-pg-ink-mute"> · wali: {s.guardian}</span>
                           )}
                           {s.note && (
-                            <span className="text-pg-cream/40"> · {s.note}</span>
+                            <span className="text-pg-ink-mute"> · {s.note}</span>
                           )}
                         </div>
                         {s.level && (
-                          <span className="shrink-0 ml-3 text-[10px] uppercase tracking-wider text-pg-gold border border-pg-gold/30 px-2 py-1">
+                          <span className="shrink-0 ml-3 text-[10px] uppercase tracking-wider text-pg-berry border border-pg-berry/25 px-2 py-1">
                             {s.level}
                           </span>
                         )}

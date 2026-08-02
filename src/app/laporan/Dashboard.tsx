@@ -144,7 +144,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <section className="max-w-4xl mx-auto px-6 md:px-8 py-16">
-        <p className="text-sm text-pg-cream/40">Memuat laporan...</p>
+        <p className="text-sm text-pg-ink-mute">Memuat laporan...</p>
       </section>
     );
   }
@@ -153,7 +153,7 @@ export default function Dashboard() {
     <section className="max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-16 space-y-14">
       {/* Headline / pride board */}
       <div>
-        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-5">
+        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-5">
           Sekilas Peran Gendis
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -161,15 +161,15 @@ export default function Dashboard() {
             <div
               key={h.label}
               className="p-5"
-              style={{ background: "#1a0533", border: "1px solid rgba(217,119,6,0.18)" }}
+              style={{ background: "var(--color-pg-paper-2)", border: "1px solid var(--color-pg-paper-3)" }}
             >
               <div
-                className="font-display font-black text-pg-cream leading-none"
+                className="font-display font-black text-pg-ink leading-none"
                 style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", letterSpacing: "-0.02em" }}
               >
                 {h.value}
               </div>
-              <div className="mt-2 text-[11px] uppercase tracking-wider text-pg-cream/45">
+              <div className="mt-2 text-[11px] uppercase tracking-wider text-pg-ink-mute">
                 {h.label}
               </div>
             </div>
@@ -191,8 +191,8 @@ export default function Dashboard() {
           rows={Object.entries(materiPerMapel).sort((a, b) => b[1] - a[1])}
           empty="Belum ada materi."
         />
-        <div className="p-6" style={{ background: "#1a0533", border: "1px solid rgba(245,230,200,0.08)" }}>
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-4">
+        <div className="p-6" style={{ background: "var(--color-pg-paper-2)", border: "1px solid rgba(245,230,200,0.08)" }}>
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-4">
             Akumulasi GeMar
           </h3>
           <ul className="space-y-3 text-sm">
@@ -206,7 +206,7 @@ export default function Dashboard() {
 
       {/* Tim / Kabar */}
       <div>
-        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-5">
+        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-5">
           Aktivitas Tim (Kabar)
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -218,17 +218,17 @@ export default function Dashboard() {
             suffix=" kabar"
           />
         </div>
-        <p className="mt-4 text-xs text-pg-cream/45">
+        <p className="mt-4 text-xs text-pg-ink-mute">
           {kabar30} kabar dalam 30 hari terakhir · {totalKabar} total.
         </p>
       </div>
 
       {/* Target tahunan */}
       <div>
-        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-2">
+        <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-2">
           Target Tahunan 2026
         </h2>
-        <p className="text-xs text-pg-cream/40 mb-5">
+        <p className="text-xs text-pg-ink-mute mb-5">
           Angka dari catatan tim (Core) — diperbarui manual saat program jalan.
         </p>
         <div className="space-y-4">
@@ -237,15 +237,15 @@ export default function Dashboard() {
             return (
               <div key={t.label}>
                 <div className="flex items-baseline justify-between mb-1.5">
-                  <span className="text-sm text-pg-cream">{t.label}</span>
-                  <span className="text-xs text-pg-cream/50">
+                  <span className="text-sm text-pg-ink">{t.label}</span>
+                  <span className="text-xs text-pg-ink-mute">
                     {t.current}/{t.target} {t.unit}
                   </span>
                 </div>
                 <div className="h-2 w-full" style={{ background: "rgba(245,230,200,0.08)" }}>
                   <div
                     className="h-full"
-                    style={{ width: pct + "%", background: "#d97706" }}
+                    style={{ width: pct + "%", background: "var(--color-pg-berry)" }}
                   />
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <p className="text-xs text-pg-cream/35 leading-relaxed border-t border-pg-cream/10 pt-6">
+      <p className="text-xs text-pg-ink-mute leading-relaxed border-t border-pg-paper-3 pt-6">
         Data live ditarik dari modul Murid · Tentor · Kehadiran · Materi · Kabar · Aset.
         Angka membesar otomatis seiring tim mengisi. Iuran = agregat (bukan ledger per orang).
       </p>
@@ -265,8 +265,8 @@ export default function Dashboard() {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <li className="flex items-baseline justify-between">
-      <span className="text-pg-cream/60">{label}</span>
-      <span className="text-pg-gold font-semibold">{value}</span>
+      <span className="text-pg-ink-mute">{label}</span>
+      <span className="text-pg-berry font-semibold">{value}</span>
     </li>
   );
 }
@@ -284,17 +284,17 @@ function BarCard({
 }) {
   const max = rows.reduce((m, r) => Math.max(m, r[1]), 0) || 1;
   return (
-    <div className="p-6" style={{ background: "#1a0533", border: "1px solid rgba(245,230,200,0.08)" }}>
-      <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-gold mb-4">{title}</h3>
+    <div className="p-6" style={{ background: "var(--color-pg-paper-2)", border: "1px solid rgba(245,230,200,0.08)" }}>
+      <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-pg-berry mb-4">{title}</h3>
       {rows.length === 0 ? (
-        <p className="text-sm text-pg-cream/40">{empty || "Belum ada data."}</p>
+        <p className="text-sm text-pg-ink-mute">{empty || "Belum ada data."}</p>
       ) : (
         <ul className="space-y-3">
           {rows.map(([label, n]) => (
             <li key={label}>
               <div className="flex items-baseline justify-between mb-1">
-                <span className="text-sm text-pg-cream/80 truncate pr-2">{label}</span>
-                <span className="text-xs text-pg-gold shrink-0">
+                <span className="text-sm text-pg-ink-soft truncate pr-2">{label}</span>
+                <span className="text-xs text-pg-berry shrink-0">
                   {n}
                   {suffix}
                 </span>
@@ -302,7 +302,7 @@ function BarCard({
               <div className="h-1.5 w-full" style={{ background: "rgba(245,230,200,0.07)" }}>
                 <div
                   className="h-full"
-                  style={{ width: Math.round((n / max) * 100) + "%", background: "#d97706" }}
+                  style={{ width: Math.round((n / max) * 100) + "%", background: "var(--color-pg-berry)" }}
                 />
               </div>
             </li>

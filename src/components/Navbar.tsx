@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,167 +16,215 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const isTentangActive = pathname === "/tentang" || pathname === "/tim";
 
-  return (
-    <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-2">
-        <div className="w-full flex items-center justify-between">
-          
-          {/* Left: Logo */}
-          <div className="flex-1 flex justify-start">
-            <Link 
-              href="/" 
-              className="pointer-events-auto h-12 rounded-full liquid-glass flex items-center gap-3 pr-5 pl-1.5 shadow-lg hover:bg-white/5 transition-colors group"
-              style={{ background: "rgba(13, 1, 24, 0.4)", backdropFilter: "blur(16px)" }}
-            >
-              <div className="w-9 h-9 rounded-full overflow-hidden bg-pg-cream flex items-center justify-center shrink-0">
-                <Image
-                  src="/logo.webp"
-                  alt="Logo Peran Gendis"
-                  width={36}
-                  height={36}
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <span className="text-pg-cream font-display font-bold text-[15px] leading-tight tracking-wide hidden sm:block">
-                Peran Gendis
-              </span>
-            </Link>
-          </div>
+  // Tutup menu saat pindah halaman.
+  useEffect(() => setOpen(false), [pathname]);
 
-          {/* Center: Desktop Nav */}
-          <nav 
-            className="hidden md:flex flex-none pointer-events-auto items-center gap-1 liquid-glass p-1.5 rounded-full shadow-lg relative"
-            style={{ background: "rgba(13, 1, 24, 0.4)", backdropFilter: "blur(16px)" }}
-          >
+  // Esc menutup menu — pengguna keyboard tidak boleh terkunci di dalamnya.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled
+          ? "border-pg-paper-3 bg-pg-paper/85 backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5 rounded-full py-1 pr-3"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-pg-paper-3">
+            <Image
+              src="/logo.webp"
+              alt=""
+              width={36}
+              height={36}
+              priority
+              className="object-cover"
+            />
+          </span>
+          <span className="font-display text-[16px] font-semibold tracking-tight text-pg-ink">
+            Peran Gendis
+          </span>
+        </Link>
+
+        <nav aria-label="Navigasi utama" className="hidden md:block">
+          <ul className="flex items-center gap-1">
             {navLinks.map(({ href, label }) => {
-              const active = pathname === href || (href === "/tentang" && pathname === "/tim");
+              const active =
+                pathname === href || (href === "/tentang" && pathname === "/tim");
               return (
-                <div key={href} className="relative group">
+                <li key={href}>
                   <Link
                     href={href}
-                    className={`px-5 py-2 rounded-full text-[13px] font-medium transition-colors block ${
+                    aria-current={active ? "page" : undefined}
+                    className={`inline-flex min-h-10 items-center rounded-full px-4 text-[14px] font-medium transition-colors ${
                       active
-                        ? "bg-white/15 text-white"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
+                        ? "bg-pg-berry-soft text-pg-berry"
+                        : "text-pg-ink-soft hover:bg-pg-paper-2 hover:text-pg-ink"
                     }`}
                   >
                     {label}
                   </Link>
-                </div>
+                </li>
               );
             })}
-          </nav>
+          </ul>
+        </nav>
 
-          {/* Right: Mobile Toggle & Spacer */}
-          <div className="flex-1 flex justify-end pointer-events-auto">
-            <button
-              onClick={() => setOpen(!open)}
-              className="md:hidden w-12 h-12 rounded-full liquid-glass flex flex-col gap-1 items-center justify-center shadow-lg hover:bg-white/5 transition-colors"
-              style={{ background: "rgba(13, 1, 24, 0.4)", backdropFilter: "blur(16px)" }}
-              aria-label="Toggle menu"
-            >
-              <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${open ? 'rotate-45 translate-y-1.5' : ''}`} />
-              <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-              <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${open ? '-rotate-45 -translate-y-1.5' : ''}`} />
-            </button>
-          </div>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/program/gemar#relawan"
+            className="hidden min-h-10 items-center rounded-full bg-pg-berry px-5 text-[14px] font-semibold text-white transition-colors hover:bg-pg-berry-deep sm:inline-flex"
+          >
+            Jadi pengajar
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="menu-ponsel"
+            aria-label={open ? "Tutup menu navigasi" : "Buka menu navigasi"}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-full border border-pg-paper-3 bg-white/70 transition-colors hover:bg-pg-paper-2 md:hidden"
+          >
+            <span
+              className={`h-0.5 w-5 bg-pg-ink transition-transform duration-300 ${
+                open ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-5 bg-pg-ink transition-opacity duration-300 ${
+                open ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-5 bg-pg-ink transition-transform duration-300 ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </button>
         </div>
-
-        {/* Desktop Active Sub-menu for Tentang -> Tim */}
-        <AnimatePresence>
-          {isTentangActive && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="hidden md:flex pointer-events-auto"
-            >
-              <nav 
-                className="liquid-glass p-1 rounded-full shadow-lg flex items-center gap-1"
-                style={{ background: "rgba(217, 119, 6, 0.15)", backdropFilter: "blur(12px)", border: "1px solid rgba(217, 119, 6, 0.3)" }}
-              >
-                <Link
-                  href="/tentang"
-                  className={`px-4 py-1.5 rounded-full text-[11px] uppercase tracking-widest font-bold transition-colors ${
-                    pathname === "/tentang" ? "bg-pg-gold text-[#0d0118]" : "text-pg-gold hover:bg-pg-gold/20"
-                  }`}
-                >
-                  Identitas
-                </Link>
-                <Link
-                  href="/tim"
-                  className={`px-4 py-1.5 rounded-full text-[11px] uppercase tracking-widest font-bold transition-colors ${
-                    pathname === "/tim" ? "bg-pg-gold text-[#0d0118]" : "text-pg-gold hover:bg-pg-gold/20"
-                  }`}
-                >
-                  Tim Kami
-                </Link>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="absolute top-16 left-4 right-4 mt-2 p-3 rounded-[1.5rem] liquid-glass shadow-2xl pointer-events-auto md:hidden flex flex-col gap-1 z-40"
-            style={{ background: "rgba(13, 1, 24, 0.85)", backdropFilter: "blur(24px)" }}
+      {/* Sub-menu Tentang → Tim (desktop) */}
+      {isTentangActive && (
+        <div className="hidden border-t border-pg-paper-3 bg-pg-paper/80 md:block">
+          <nav
+            aria-label="Bagian Tentang"
+            className="mx-auto max-w-6xl px-6 py-2"
           >
-            {navLinks.map(({ href, label }) => {
-              const isTentangLink = href === "/tentang";
-              const active = pathname === href || (isTentangLink && pathname === "/tim");
-              
-              return (
-                <div key={href} className="flex flex-col">
+            <ul className="flex items-center gap-2">
+              {[
+                { href: "/tentang", label: "Identitas" },
+                { href: "/tim", label: "Tim Kami" },
+              ].map(({ href, label }) => (
+                <li key={href}>
                   <Link
                     href={href}
-                    onClick={() => setOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                      active
-                        ? "bg-white/10 text-white"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
+                    aria-current={pathname === href ? "page" : undefined}
+                    className={`inline-flex min-h-9 items-center rounded-full px-4 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+                      pathname === href
+                        ? "bg-pg-berry text-white"
+                        : "text-pg-ink-soft hover:bg-pg-paper-2"
                     }`}
                   >
                     {label}
                   </Link>
-                  
-                  {/* Mobile Sub-menu for Tentang */}
-                  {isTentangLink && active && (
-                    <div className="ml-4 mt-1 mb-2 pl-4 border-l-2 border-pg-gold/30 flex flex-col gap-1">
-                      <Link
-                        href="/tentang"
-                        onClick={() => setOpen(false)}
-                        className={`block px-3 py-2 rounded-lg text-[12px] uppercase tracking-widest font-bold transition-colors ${
-                          pathname === "/tentang" ? "text-pg-gold" : "text-white/50 hover:text-white"
-                        }`}
-                      >
-                        Identitas
-                      </Link>
-                      <Link
-                        href="/tim"
-                        onClick={() => setOpen(false)}
-                        className={`block px-3 py-2 rounded-lg text-[12px] uppercase tracking-widest font-bold transition-colors ${
-                          pathname === "/tim" ? "text-pg-gold" : "text-white/50 hover:text-white"
-                        }`}
-                      >
-                        Tim Kami
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </motion.div>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            id="menu-ponsel"
+            aria-label="Navigasi utama"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="border-t border-pg-paper-3 bg-pg-paper/95 backdrop-blur-md md:hidden"
+          >
+            <ul className="mx-auto max-w-6xl px-4 py-3">
+              {navLinks.map(({ href, label }) => {
+                const active =
+                  pathname === href ||
+                  (href === "/tentang" && pathname === "/tim");
+                return (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex min-h-12 items-center rounded-xl px-4 text-[15px] font-medium transition-colors ${
+                        active
+                          ? "bg-pg-berry-soft text-pg-berry"
+                          : "text-pg-ink-soft hover:bg-pg-paper-2"
+                      }`}
+                    >
+                      {label}
+                    </Link>
+
+                    {href === "/tentang" && active && (
+                      <ul className="mb-1 ml-4 border-l-2 border-pg-berry/25 pl-4">
+                        {[
+                          { href: "/tentang", label: "Identitas" },
+                          { href: "/tim", label: "Tim Kami" },
+                        ].map((sub) => (
+                          <li key={sub.href}>
+                            <Link
+                              href={sub.href}
+                              aria-current={
+                                pathname === sub.href ? "page" : undefined
+                              }
+                              className={`flex min-h-11 items-center rounded-lg px-3 text-[13px] font-semibold uppercase tracking-[0.1em] transition-colors ${
+                                pathname === sub.href
+                                  ? "text-pg-berry"
+                                  : "text-pg-ink-mute hover:text-pg-ink"
+                              }`}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+
+              <li className="mt-2">
+                <Link
+                  href="/program/gemar#relawan"
+                  className="flex min-h-12 items-center justify-center rounded-full bg-pg-berry px-5 text-[15px] font-semibold text-white"
+                >
+                  Jadi pengajar
+                </Link>
+              </li>
+            </ul>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>

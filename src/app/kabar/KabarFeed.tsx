@@ -17,13 +17,13 @@ type Update = {
 
 // Warna chip per kategori (display-only). Tema utama tetap void + amber.
 const CATEGORY_COLORS: Record<string, string> = {
-  GeMar: "#d97706",
+  GeMar: "var(--color-pg-berry)",
   GeRak: "#fb7185",
-  "Catatan Gendis": "#a855f7",
-  KoPer: "#06b6d4",
+  "Catatan Gendis": "var(--color-pg-berry)",
+  KoPer: "var(--color-pg-leaf)",
   Mitra: "#34d399",
   Internal: "#94a3b8",
-  Keuangan: "#fbbf24",
+  Keuangan: "var(--color-pg-gula)",
   Lainnya: "#cbb89a",
 };
 
@@ -133,7 +133,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
     <section
       id="kabar"
       className="relative overflow-hidden"
-      style={{ background: "#0d0118" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       {/* Ambient amber glow — atas-kanan */}
       <div
@@ -153,7 +153,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="block text-xs tracking-[0.3em] uppercase text-pg-gold mb-6"
+              className="block text-xs tracking-[0.3em] uppercase text-pg-berry mb-6"
             >
               Dari Lapangan
             </motion.span>
@@ -162,7 +162,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="font-display font-bold text-pg-cream leading-[1.15]"
+              className="font-display font-bold text-pg-ink leading-[1.15]"
               style={{
                 fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
                 letterSpacing: "-0.02em",
@@ -170,14 +170,14 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
             >
               Aliran Kabar
               <br />
-              <em className="text-pg-cream/60">dari tim, untuk kamu.</em>
+              <em className="text-pg-ink-mute">dari tim, untuk kamu.</em>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-              className="mt-5 text-sm md:text-base text-pg-cream-warm/60"
+              className="mt-5 text-sm md:text-base text-pg-ink-soft"
               style={{ fontWeight: 300, lineHeight: 1.7 }}
             >
               Catatan kecil, kabar besar, dan setiap langkah di antaranya — apa
@@ -197,7 +197,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
         >
           {["Semua", ...CATEGORIES].map((cat) => {
             const isActive = active === cat;
-            const accent = cat === "Semua" ? "#d97706" : colorFor(cat);
+            const accent = cat === "Semua" ? "var(--color-pg-berry)" : colorFor(cat);
             const count = counts[cat] ?? 0;
             return (
               <button
@@ -209,13 +209,13 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
                   isActive
                     ? {
                         background: accent,
-                        color: cat === "Semua" ? "#0d0118" : "#0d0118",
+                        color: "var(--color-pg-ink)",
                         border: `1px solid ${accent}`,
                       }
                     : {
                         background: "transparent",
-                        color: "var(--color-pg-cream)",
-                        border: "1px solid rgba(254,243,199,0.15)",
+                        color: "var(--color-pg-ink)",
+                        border: "1px solid var(--color-pg-paper-3)",
                       }
                 }
               >
@@ -239,7 +239,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
         {loading ? (
           <div className="py-20 text-center">
             <p
-              className="font-display italic text-pg-cream-warm/45"
+              className="font-display italic text-pg-ink-mute"
               style={{ fontSize: "1.05rem" }}
             >
               Mengumpulkan kabar terbaru...
@@ -253,10 +253,10 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
               border: "1px solid rgba(251,113,133,0.3)",
             }}
           >
-            <p className="font-display font-semibold text-base text-pg-cream mb-1">
+            <p className="font-display font-semibold text-base text-pg-ink mb-1">
               Kabar gagal dimuat
             </p>
-            <p className="text-sm text-pg-cream/55" style={{ fontWeight: 300 }}>
+            <p className="text-sm text-pg-ink-mute" style={{ fontWeight: 300 }}>
               Sambungan ke server terputus. Coba muat ulang halaman sebentar lagi.
             </p>
           </div>
@@ -264,16 +264,16 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
           <div
             className="py-16 px-6 text-center"
             style={{
-              borderTop: "1px solid rgba(217,119,6,0.2)",
-              borderBottom: "1px solid rgba(217,119,6,0.12)",
+              borderTop: "1px solid var(--color-pg-paper-3)",
+              borderBottom: "1px solid var(--color-pg-berry-soft)",
             }}
           >
-            <p className="font-display italic text-lg text-pg-cream-warm/55 mb-2">
+            <p className="font-display italic text-lg text-pg-ink-mute mb-2">
               {active === "Semua"
                 ? "Belum ada kabar untuk saat ini."
                 : `Belum ada kabar di kategori ${active}.`}
             </p>
-            <p className="text-sm text-pg-cream/45" style={{ fontWeight: 300 }}>
+            <p className="text-sm text-pg-ink-mute" style={{ fontWeight: 300 }}>
               {active === "Semua"
                 ? "Tim sedang sibuk di lapangan — cerita pertama akan muncul di sini."
                 : "Coba lihat kategori lain, atau tengok lagi nanti."}
@@ -283,7 +283,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
           // Timeline — garis vertikal amber di kiri
           <div
             className="relative pl-6 md:pl-8"
-            style={{ borderLeft: "1px solid rgba(217,119,6,0.25)" }}
+            style={{ borderLeft: "1px solid var(--color-pg-paper-3)" }}
           >
             {filtered.map((it, i) => {
               const accent = colorFor(it.category);
@@ -321,13 +321,13 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
                     >
                       {it.category}
                     </span>
-                    <span className="text-sm font-semibold text-pg-cream-warm">
+                    <span className="text-sm font-semibold text-pg-ink">
                       {it.author}
                     </span>
-                    <span className="text-pg-cream/30">·</span>
+                    <span className="text-pg-ink-mute">·</span>
                     <time
                       dateTime={it.created_at}
-                      className="text-xs text-pg-cream/45"
+                      className="text-xs text-pg-ink-mute"
                     >
                       {timeAgo(it.created_at)}
                     </time>
@@ -335,7 +335,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
 
                   {/* Body */}
                   <p
-                    className="text-pg-cream-warm/85 whitespace-pre-wrap"
+                    className="text-pg-ink whitespace-pre-wrap"
                     style={{ fontWeight: 300, lineHeight: 1.7 }}
                   >
                     {it.body}
@@ -345,7 +345,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
                   {(it.event_date || it.location || it.link) && (
                     <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs">
                       {it.event_date && (
-                        <span className="inline-flex items-center gap-1.5 text-pg-cream/55">
+                        <span className="inline-flex items-center gap-1.5 text-pg-ink-mute">
                           <svg
                             width="12"
                             height="12"
@@ -373,7 +373,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
                         </span>
                       )}
                       {it.location && (
-                        <span className="inline-flex items-center gap-1.5 text-pg-cream/55">
+                        <span className="inline-flex items-center gap-1.5 text-pg-ink-mute">
                           <svg
                             width="12"
                             height="12"
@@ -403,7 +403,7 @@ export default function KabarFeed({ refreshToken }: { refreshToken: number }) {
                           href={it.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 underline underline-offset-2 transition-colors text-pg-gold hover:text-pg-gold-light"
+                          className="inline-flex items-center gap-1.5 underline underline-offset-2 transition-colors text-pg-berry hover:text-pg-berry"
                         >
                           <svg
                             width="12"

@@ -1,118 +1,182 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* Brand Colors */
-  --color-pg-dark:        #1a0533;
-  --color-pg-darkest:     #0d0b18;
-  --color-pg-purple:      #3b1263;
-  --color-pg-purple-mid:  #6b21a8;
-  --color-pg-purple-light:#a855f7;
-  --color-pg-teal:        #0e7490;
-  --color-pg-teal-light:  #06b6d4;
-  --color-pg-cream:       #fef3c7;
-  --color-pg-cream-warm:  #f5e6c8;
-  --color-pg-gold:        #d97706;
-  --color-pg-gold-light:  #fbbf24;
+/* ============================================================
+   PERAN GENDIS — DESIGN SYSTEM
+   ------------------------------------------------------------
+   Diturunkan langsung dari filosofi logo (Core §3):
+     · Lonceng      → suara yang lantang, hadir untuk mengadvokasi
+     · Bunga Bakung → "Cantik, tetapi beracun. Terkesan manis,
+                       tetapi berani bersifat kritis."
+   Keduanya berbentuk sama: lonceng kecil. Itu motif situs ini.
 
-  /* Fonts */
-  --font-display: var(--font-playfair);
+   Terjemahan ke visual:
+     · "Manis"  → dasar kertas hangat (gendis = gula), bukan hitam.
+     · "Berani" → tinta plum pekat + aksen berry, dipakai tegas.
+     · "Akar rumput" → hijau daun bakung sebagai penopang.
+   Semua pasangan warna di bawah sudah diuji kontras WCAG AA.
+   ============================================================ */
+
+@theme inline {
+  /* --- Kertas: dasar hangat, bukan putih steril --- */
+  --color-pg-paper:      #faf6ef;
+  --color-pg-paper-2:    #f3ebe0;
+  --color-pg-paper-3:    #d9c7b0;
+
+  /* --- Tinta: ungu brand dipakai sebagai tinta, bukan latar --- */
+  --color-pg-ink:        #2a1129;
+  --color-pg-ink-soft:   #574055;
+  --color-pg-ink-mute:   #6b5468;
+
+  /* --- Berry: suara kritis. Aksi utama, penanda, tautan. --- */
+  --color-pg-berry:      #96185f;
+  --color-pg-berry-deep: #6d1145;
+  --color-pg-berry-soft: #fbe9f2;
+
+  /* --- Daun bakung: akar rumput, tumbuh, tenang --- */
+  --color-pg-leaf:       #2f6b4f;
+  --color-pg-leaf-soft:  #e4f0e8;
+
+  /* --- Gula jawa: kehangatan. Aksen, bukan teks kecil. --- */
+  --color-pg-gula:       #96551a;
+  --color-pg-gula-soft:  #fbeedd;
+
+  /* --- Pekat: dipakai sebagai tanda baca, bukan seluruh halaman --- */
+  --color-pg-deep:       #241026;
+  --color-pg-deep-2:     #34193440;
+
+  --font-display: var(--font-fraunces);
   --font-body:    var(--font-jakarta);
-  
-  /* Animations */
-  --animate-shimmer: shimmer 3s linear infinite;
-  --animate-gradient-text: gradientText 4s ease infinite;
-  --animate-float: float 6s ease-in-out infinite;
-  
-  @keyframes shimmer {
-    from { background-position: 200% 0; }
-    to { background-position: -200% 0; }
-  }
-  
-  @keyframes gradientText {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
 }
 
 :root {
   color-scheme: light;
+  --pg-rhythm: clamp(4rem, 10vw, 7.5rem); /* jarak antar-bagian */
+}
+
+/* Bagian yang belum masuk layar menunggu di posisi geser (x: ±36px) sampai
+   animasinya jalan. Tanpa dikurung, geseran itu memunculkan gulir mendatar
+   di layar sempit (melanggar WCAG 1.4.10 Reflow). Dipakai `clip`, bukan
+   `hidden`, supaya position: sticky di dalamnya tetap berfungsi. */
+html {
+  overflow-x: clip;
+}
+main {
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-body), system-ui, sans-serif;
-  background: #ffffff;
-  color: #1a0533;
+  background: var(--color-pg-paper);
+  color: var(--color-pg-ink);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-/* Subtle grain overlay — visible only on dark backgrounds */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.032;
-  pointer-events: none;
-  z-index: 9999;
+p { text-wrap: pretty; }
+
+/* ------------------------------------------------------------
+   Fokus keyboard — satu aturan, berlaku di mana pun.
+   Dipakai warna berry supaya tetap terlihat di kertas & di pekat.
+   ------------------------------------------------------------ */
+:focus-visible {
+  outline: 3px solid var(--color-pg-berry);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* Liquid glass — frosted panel for footer & navbar */
-.liquid-glass {
-  background: rgba(255, 255, 255, 0.01);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
+.on-deep :focus-visible,
+.pg-deep :focus-visible {
+  outline-color: #ffb3d9;
 }
 
-.liquid-glass::before {
+/* Lewati-ke-konten: hanya muncul saat di-tab */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background: var(--color-pg-berry);
+  color: #fff;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ------------------------------------------------------------
+   Tekstur kertas — menggantikan video latar (dulu ±MB dari CDN luar).
+   Murni CSS: nol permintaan jaringan, nol beban decode.
+   ------------------------------------------------------------ */
+.pg-grain::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
-    rgba(255, 255, 255, 0.45) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Special Effects Utilities */
-.text-glow {
-  text-shadow: 0 0 20px rgba(217, 119, 6, 0.6), 0 0 40px rgba(217, 119, 6, 0.2);
+/* ------------------------------------------------------------
+   Aksen garis-bawah "disapu kuas" untuk kata kunci di judul.
+   Manis di permukaan, tapi menandai kata yang serius.
+   ------------------------------------------------------------ */
+.pg-underline {
+  position: relative;
+  display: inline-block;
+}
+.pg-underline::after {
+  content: '';
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.06em;
+  height: 0.32em;
+  background: var(--color-pg-gula-soft);
+  border-radius: 0.2em;
+  z-index: -1;
 }
 
-.box-glow {
-  box-shadow: 0 0 30px rgba(217, 119, 6, 0.15), inset 0 0 20px rgba(217, 119, 6, 0.05);
+/* ------------------------------------------------------------
+   Label kapital berjarak huruf lebar gampang melewati tepi layar
+   sempit dan memaksa gulir mendatar (melanggar WCAG 1.4.10 Reflow).
+   Jaraknya dirapatkan di layar kecil, bukan dihapus.
+   ------------------------------------------------------------ */
+@media (max-width: 420px) {
+  .tracking-\[0\.35em\] { letter-spacing: 0.14em; }
+  .tracking-\[0\.3em\]  { letter-spacing: 0.13em; }
+  .tracking-\[0\.25em\] { letter-spacing: 0.12em; }
 }
 
-.animated-gradient-text {
-  background: linear-gradient(to right, #d97706, #fbbf24, #fef3c7, #fbbf24, #d97706);
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
+/* Kartu dasar */
+.pg-card {
+  background: #fff;
+  border: 1px solid var(--color-pg-paper-3);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 2px rgba(42, 17, 41, 0.04);
+}
+
+/* ------------------------------------------------------------
+   Hormati prefers-reduced-motion secara menyeluruh.
+   Framer Motion ditangani lewat <MotionConfig reducedMotion="user">
+   di layout; aturan ini menutup sisanya (CSS + animasi pihak ketiga).
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

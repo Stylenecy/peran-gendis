@@ -36,9 +36,9 @@ export const MATERIAL_KINDS = ["Modul", "Soal", "Media", "Referensi"] as const;
 export const IURAN_DEFAULT = 15000;
 
 export const inputCls =
-  "w-full bg-transparent border border-pg-cream/15 px-4 py-3 text-sm text-pg-cream placeholder-pg-cream/30 outline-none transition-all duration-200 focus:border-pg-gold";
+  "w-full bg-transparent border border-pg-paper-3 px-4 py-3 text-sm text-pg-ink placeholder-pg-ink-mute outline-none transition-all duration-200 focus:border-pg-berry";
 
-export const labelCls = "block text-xs tracking-[0.3em] uppercase text-pg-gold mb-2.5";
+export const labelCls = "block text-xs tracking-[0.3em] uppercase text-pg-berry mb-2.5";
 
 export type Student = {
   id: string;

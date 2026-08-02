@@ -54,7 +54,7 @@ export default function GemarLocations() {
     <section
       id="lokasi"
       className="relative overflow-hidden"
-      style={{ background: "#0d0118" }}
+      style={{ background: "var(--color-pg-paper)" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-36">
         {/* Header — off-center */}
@@ -65,7 +65,7 @@ export default function GemarLocations() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="block text-pg-gold text-xs tracking-[0.3em] uppercase mb-6"
+              className="block text-pg-berry text-xs tracking-[0.3em] uppercase mb-6"
             >
               5 Lokasi Aktif
             </motion.span>
@@ -74,18 +74,18 @@ export default function GemarLocations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="font-display font-bold text-pg-cream leading-[1.2]"
+              className="font-display font-bold text-pg-ink leading-[1.2]"
               style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", letterSpacing: "-0.02em" }}
             >
               Kami hadir di sekitar kamu,
               <br />
-              <em className="text-pg-cream/60">setiap minggu, tanpa jeda.</em>
+              <em className="text-pg-ink-mute">setiap minggu, tanpa jeda.</em>
             </motion.h2>
           </div>
         </div>
 
         {/* Editorial table */}
-        <div className="border-t border-pg-gold/20">
+        <div className="border-t border-pg-berry/25">
           {locations.map((loc, i) => (
             <motion.a
               key={loc.number}
@@ -96,31 +96,28 @@ export default function GemarLocations() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-0 py-8 md:py-10 border-b"
-              style={{ borderColor: "rgba(217,119,6,0.15)" }}
+              className="group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-0 border-b border-pg-paper-3 py-8 md:py-10"
             >
-              {/* Hover purple sweep */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "rgba(59,18,99,0.2)" }}
+                className="pointer-events-none absolute inset-0 bg-pg-paper-2 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
               />
-              {/* Amber left indicator */}
-              <div className="absolute left-0 top-0 w-0.5 h-0 group-hover:h-full transition-all duration-500 bg-pg-gold" />
+              <div
+                className="absolute left-0 top-0 h-0 w-0.5 bg-pg-berry transition-all duration-500 group-hover:h-full"
+                aria-hidden="true"
+              />
 
               {/* Number */}
-              <div className="md:w-16 shrink-0">
-                <span
-                  className="font-display text-base font-normal"
-                  style={{ color: "rgba(217,119,6,0.5)" }}
-                >
+              <div className="relative md:w-16 shrink-0">
+                <span className="font-display text-base font-semibold text-pg-berry">
                   {loc.number}
                 </span>
               </div>
 
               {/* Name + area */}
-              <div className="flex-1 md:mr-8">
+              <div className="relative flex-1 md:mr-8">
                 <h3
-                  className="font-display font-semibold text-pg-cream leading-[1.2]"
+                  className="font-display font-semibold text-pg-ink leading-[1.2]"
                   style={{
                     fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)",
                     letterSpacing: "-0.01em",
@@ -128,22 +125,22 @@ export default function GemarLocations() {
                 >
                   {loc.name}
                 </h3>
-                <p className="mt-1 text-sm text-pg-gold">{loc.area}</p>
+                <p className="mt-1 text-sm text-pg-berry">{loc.area}</p>
               </div>
 
               {/* Note — desktop only */}
-              <div className="hidden md:block flex-1 px-4">
+              <div className="relative hidden md:block flex-1 px-4">
                 <p
-                  className="font-display italic text-sm text-pg-cream-warm/45"
+                  className="font-display italic text-sm text-pg-ink-mute"
                 >
                   {loc.note}
                 </p>
               </div>
 
               {/* Day + time */}
-              <div className="md:text-right shrink-0">
-                <p className="text-sm font-medium text-pg-cream-warm">{loc.day}</p>
-                <p className="text-xs mt-0.5 text-pg-cream/50">{loc.time}</p>
+              <div className="relative md:text-right shrink-0">
+                <p className="text-sm font-medium text-pg-ink">{loc.day}</p>
+                <p className="text-xs mt-0.5 text-pg-ink-mute">{loc.time}</p>
               </div>
             </motion.a>
           ))}
@@ -155,10 +152,21 @@ export default function GemarLocations() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-10 text-sm text-pg-cream-warm/35"
-          style={{ fontWeight: 300 }}
+          className="mt-10 max-w-2xl text-sm leading-relaxed text-pg-ink-soft"
         >
-          * Semua sesi berlangsung pukul 16:00 – 17:30 WIB. Tidak ada biaya masuk.
+          * Semua sesi berlangsung pukul 16:00 – 17:30 WIB. Tidak ada biaya
+          masuk. Titik belajar sesekali berpindah mengikuti kesepakatan warga —
+          kalau kamu baru pertama datang,{" "}
+          <a
+            href="https://wa.me/6285865193598"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-pg-berry underline underline-offset-4 hover:text-pg-berry-deep"
+          >
+            pastikan dulu lewat WhatsApp
+            <span className="sr-only"> (buka di tab baru)</span>
+          </a>{" "}
+          supaya tidak salah tempat.
         </motion.p>
       </div>
     </section>
